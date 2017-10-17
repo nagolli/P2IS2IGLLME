@@ -16,6 +16,7 @@ public class Miembro {
     private String apellidos;   //pero dado que estamos trabajando con un club
     private int nsocio;      //privado con carnets, usaremos el número de socio
     private ArrayList <Moto> motosposesion;
+    private static int costemaximo;
     
     Miembro(){
         //Constructor vacio por si se crea sin argumentos
@@ -24,18 +25,20 @@ public class Miembro {
     /*
     Constructor estandar   
     */
-    Miembro(String nombre, String apellidos, int nsocio){
+    Miembro(String nombre, String apellidos, int nsocio, int costemaximo){
         this.nombre=nombre;
         this.apellidos=apellidos;
         this.nsocio=nsocio;
         motosposesion = new ArrayList();
+        Miembro.costemaximo=costemaximo;
         //Se puede crear miembro sin introducir las motos en la construcción
     }
-    Miembro(String nombre, String apellidos, int nsocio, ArrayList <Moto> motosposesion){
+    Miembro(String nombre, String apellidos, int nsocio, ArrayList <Moto> motosposesion, int costemaximo){
         this.nombre=nombre;
         this.apellidos=apellidos;
         this.nsocio=nsocio;
         this.motosposesion=motosposesion;
+        Miembro.costemaximo=costemaximo;
     }
     public String GetNombre(){
         return nombre;
@@ -48,6 +51,10 @@ public class Miembro {
     }
     public ArrayList <Moto> GetMotos(){
         return motosposesion;
+    }
+
+    public static int getCostemaximo() {
+        return costemaximo;
     }
     
     /*
@@ -149,7 +156,7 @@ public class Miembro {
         {
             sumatotal=sumatotal+motosposesion.get(i).GetCoste();
         }
-        if(sumatotal>6000)
+        if(sumatotal>costemaximo)
             return false;
         return true;
     }

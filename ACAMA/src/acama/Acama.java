@@ -32,7 +32,7 @@ class Acama
     Función NuevoMiembro
     Realiza el procedimiento para crear un miembro. Si hay un error no lo añade al sistema.
     */
-    public boolean NuevoMiembro()
+    public boolean NuevoMiembro(int costemaximo)
     {
         Scanner sc = new Scanner(System.in);
         sc.useDelimiter("\n");
@@ -51,7 +51,7 @@ class Acama
                 System.out.print(">> ");
                 apellidos = sc.next();
 
-                Miembro miembro = new Miembro(nombre, apellidos, input);
+                Miembro miembro = new Miembro(nombre, apellidos, input, costemaximo);
                 miembros.add(miembro);
                 OrdenarInsercion(miembros);
             } else {

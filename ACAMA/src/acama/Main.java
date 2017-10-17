@@ -21,15 +21,22 @@ public class Main
     public static void main(String[] args)
     {
         Boolean isnotend = true;
-        int input;
+        int input, costemaximo;
         Acama org = new Acama();
+        do{
+            System.out.println("Introduzca el límite de compra de las motos:");
+            costemaximo=GetNum();
+            if(costemaximo<0){
+                System.out.println("El límite ha de ser mayor a 0");
+            }
+        }while(costemaximo<0);
         while (isnotend) {
             ImprimeOpciones();
             input = GetNum();
             if (input > 0 && input < 8) {
                 switch (input) {
                     case 1:
-                        org.NuevoMiembro();
+                        org.NuevoMiembro(costemaximo);
                         break;
                     case 2:
                         org.NuevaMoto();
