@@ -33,7 +33,7 @@ public class Main
         while (isnotend) {
             ImprimeOpciones();
             input = GetNum();
-            if (input > 0 && input < 9) {
+            if (input > 0 && input < 10) {
                 switch (input) {
                     case 1:
                         org.NuevoMiembro(costemaximo);
@@ -57,11 +57,14 @@ public class Main
                         org.AumentarGastosMotos();
                         break;
                     case 8:
+                        org.EliminarMiembro();
+                        break;
+                    default:
                         isnotend=!org.Salir();
                         break;
                 }
             } else {
-                System.out.println("Error, introduzca numeros del 1 al 7");
+                System.out.println("Error, introduzca numeros del 1 al 9");
             }
         }
     }
@@ -101,7 +104,8 @@ public class Main
         System.out.println("5. Listar todas las motos");
         System.out.println("6. Mostrar las cesiones realizadas");
         System.out.println("7. Añadir gastos adicionales moto");
-        System.out.println("8. Salir");
+        System.out.println("8. Eliminar miembro");
+        System.out.println("9. Salir");
 
     }
 

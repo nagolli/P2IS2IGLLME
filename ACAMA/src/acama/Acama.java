@@ -142,13 +142,17 @@ class Acama
             pw = new PrintWriter(fichero);
 
             for (int i = 0; i < miembros.size(); i++) {
+                if(miembros.get(i)!=null){
                 pw.println(miembros.get(i).toString());
                 pw.println(" ");
+                }
             }
             pw.println(" ");
             for (int i = 0; i < cesiones.size(); i++) {
+                if(cesiones.get(i)!=null){
                 pw.println(cesiones.get(i).toString());
                 pw.println(" ");
+                }
             }
 
             if (null != fichero) {
@@ -272,5 +276,47 @@ class Acama
         }
         return false;
     }
-     
+    /*
+    Función EliminarMiembro
+    Elimina un usuario del programa.
+     */
+     public void EliminarMiembro(){
+         int i, nsocio, input;
+         Miembro socio;
+         ArrayList <Moto> motosmiembro = new ArrayList();
+         Boolean seguir=false;
+         Boolean cede=false;
+         Cesion cesion = new Cesion();
+         do{
+            do{
+               System.out.println("Introduzca número de socio: ");
+               nsocio = GetNum();
+            }while(!SocioExiste(nsocio));
+            socio=GetSocio(nsocio);
+            System.out.println("Desea eliminar este miembro?(1.Sí, 2.No, 3.Salir): ");
+            System.out.println(socio.MostrarMiembro(false));
+            input = GetNum();
+            if(input==1)
+                seguir=true;
+            if(input==3)
+                return;
+         }while(!seguir);
+         motosmiembro=socio.GetMotos();
+         for(i=0;i<motosmiembro.size();i++){
+             do{
+             motosmiembro.get(i).MostrarMoto(false);
+
+             cede=cesion.NuevaCesionSocio(cesiones.size(), this, nsocio, motosmiembro.get(i));
+             if(cede)
+                 cesiones.add(cesion);
+             else{
+                 System.out.println("Debe ceder la moto");
+             }
+                     }while(!cede);
+         }
+         for(i=0;i<miembros.size();i++){
+             if(miembros.get(i).GetNSocio()==nsocio)
+                 miembros.remove(i);
+         }
+     }
 }

@@ -66,7 +66,7 @@ public class Cesion
             System.out.println("Error, adquisidor mismo que cesor");
             return false;
         }
-        System.out.println("Introduzca ID de usuario que recibirá la moto: ");
+        System.out.println("Introduzca ID de moto que recibirá el usuario: ");
         input = GetNum();
         if (cesor.BuscarMoto(input)) {
             moto = cesor.GetMoto(input);
@@ -84,7 +84,51 @@ public class Cesion
         }
         return true;
     }
-
+    /*
+    Función NuevaCesion(int,Acama)
+    Construye, con interaccion del usuario, el nuevo objeto cesion.
+    Entradas:
+        int: Máximo ID de cesiones hasta el momento.
+        Acama: Objeto padre, para realizar comprobaciones.
+        int: El número de socio de la persona que cede.
+        Moto: La moto que se cede.
+    Devuelve:
+        True si se ha creado sin problemas
+        False si ha habido algun fallo en la creación.
+    */
+    public boolean NuevaCesionSocio(int c, Acama org, int nsocio, Moto moto)
+    {
+        int input;
+        id = c + 1;
+        fecha = new Date();
+        
+            cesor = org.GetSocio(nsocio);
+            this.moto=moto;
+        System.out.println(moto.MostrarMoto(false));
+        System.out.println("Introduzca Nº Socio que recibirá la moto: ");
+        input = GetNum();
+        if (org.SocioExiste(input)) { //ERROR SI NO
+            adquisidor = org.GetSocio(input);
+        } else {
+            System.out.println("Error, socio no existente");
+            return false;
+        }
+        if (adquisidor == cesor) //ERROR SI SÍ
+        {
+            System.out.println("Error, adquisidor mismo que cesor");
+            return false;
+        }
+        
+        if (adquisidor.CosteTotal(moto.GetCoste())) { //ERROR SI NO
+            cesor.DeleteMoto(moto);
+            adquisidor.AddMoto(moto);
+            moto.SetPropietario(adquisidor);
+        } else {
+            System.out.println("Error, usuario tiene demasiadas motos");
+            return false;
+        }
+        return true;
+    }
     /*
     Función MostrarCesion
     Construye el string que representa este objeto
@@ -94,9 +138,15 @@ public class Cesion
         String texto = "";
         texto = texto + ("Cesion " + id + ":\n");
         texto = texto + ("  Cesor:\n");
-        texto = texto + cesor.MostrarMiembro(false);
+        if(cesor != null)
+            texto = texto + cesor.MostrarMiembro(false);
+        else
+            texto = texto +("[ELIMINADO]");
         texto = texto + ("\n  Adquisidor:\n");
-        texto = texto + adquisidor.MostrarMiembro(false);
+        if(cesor != null)
+            texto = texto + adquisidor.MostrarMiembro(false);
+        else
+            texto = texto +("[ELIMINADO]");
         texto = texto + ("\n  Moto:\n");
         texto = texto + moto.MostrarMoto(false);
         texto = texto + ("\nA fecha de: " + formatoFecha.format(fecha) + "\n");
