@@ -31,7 +31,7 @@ class Acama
     /*
     Función NuevoMiembro
     Realiza el procedimiento para crear un miembro. Si hay un error no lo añade al sistema.
-    */
+     */
     public boolean NuevoMiembro(int costemaximo)
     {
         Scanner sc = new Scanner(System.in);
@@ -68,7 +68,7 @@ class Acama
     /*
     Función NuevaMoto
     Inicia el procedimiento para crear una moto. Si hay un error no la añade al sistema.
-    */
+     */
     public void NuevaMoto()
     {
         Moto moto = new Moto();
@@ -80,7 +80,7 @@ class Acama
     /*
     Función NuevaCesion
     Inicia el procedimiento para crear una cesión. Si hay un error no la añade al sistema.
-    */
+     */
     public void NuevaCesion()
     {
         Cesion cesion = new Cesion();
@@ -92,7 +92,7 @@ class Acama
     /*
     Función MiembrosMotos
     Muestra por pantalla todos los miembros
-    */
+     */
     public void MiembrosMotos()
     {
         for (int i = 0; i < miembros.size(); i++) {
@@ -104,7 +104,7 @@ class Acama
     /*
     Función ListaMotos
     Muestra por pantalla todas las motos
-    */
+     */
     public void ListaMotos()
     {
         for (int i = 0; i < motos.size(); i++) {
@@ -115,7 +115,7 @@ class Acama
     /*
     Función MostrarCesiones
     Muestra por pantalla las cesiones
-    */
+     */
     public void MostrarCesiones()
     {
         for (int i = 0; i < cesiones.size(); i++) {
@@ -126,7 +126,7 @@ class Acama
     /*
     Función Salir
     Guarda los datos en un fichero
-    */
+     */
     public boolean Salir()
     {
         Scanner sc = new Scanner(System.in);
@@ -140,7 +140,6 @@ class Acama
 
             fichero = new FileWriter(input + ".txt");
             pw = new PrintWriter(fichero);
-            
 
             for (int i = 0; i < miembros.size(); i++) {
                 pw.println(miembros.get(i).toString());
@@ -153,12 +152,12 @@ class Acama
             }
 
             if (null != fichero) {
-                    fichero.close();
-                }
+                fichero.close();
+            }
         } catch (Exception e) {
             System.out.println("Error al guardar, revise la ruta");
             return false;
-        } 
+        }
         return true;
     }
 
@@ -166,7 +165,7 @@ class Acama
     Función SocioExiste(int)
     Comprueba si un socio con ID=int existe
     
-    */
+     */
     public boolean SocioExiste(int input)
     {
         for (int i = 0; i < miembros.size(); i++) {
@@ -217,13 +216,12 @@ class Acama
         return v;
     }
 
-    
     /*
     Función GetNum
     Lee un numero por pantalla
         Devuelve un entero, en caso de error, devuelve un -1.
      */
-    private int GetNum() 
+    private int GetNum()
     {
         System.out.print(">> ");
         Scanner sc = new Scanner(System.in);
@@ -237,4 +235,42 @@ class Acama
         }
         return num;
     }
+
+    /*
+    Funcion AumentarGastosMotos
+    Aumenta el coste adicional asociado a una moto.
+    */
+    void AumentarGastosMotos()
+    {
+        int input, i;
+        //Seleccionar ID moto
+        System.out.println("Introduzca ID de moto: ");
+        i = GetNum();
+        if (!BuscarMoto(i)) {
+            System.out.println("ID de moto no existente.");
+            return;
+        }
+        //Introducir numero
+        System.out.println("Escriba el importe a aumentar:");
+        input = GetNum();
+        if (input < 0) {
+            System.out.println("Los costes añadidos deben ser positivos.");
+            return;
+        }
+        motos.get(i-1).AddOtrosGastos(input);
+    }
+    /*
+    Funcion BuscarMoto
+    Funcion que busca si existe el ID de una moto en el vector de motos
+    */
+     public Boolean BuscarMoto(int id){
+        for(int i=0;i<motos.size();i++)
+        {
+            if(motos.get(i).GetId()==id){
+                return true;
+            }
+        }
+        return false;
+    }
+     
 }

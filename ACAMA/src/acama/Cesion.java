@@ -66,7 +66,7 @@ public class Cesion
             System.out.println("Error, adquisidor mismo que cesor");
             return false;
         }
-        System.out.println("Introduzca ID de moto que recibirá la moto: ");
+        System.out.println("Introduzca ID de usuario que recibirá la moto: ");
         input = GetNum();
         if (cesor.BuscarMoto(input)) {
             moto = cesor.GetMoto(input);

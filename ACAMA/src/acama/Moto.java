@@ -19,10 +19,11 @@ public class Moto
     int coste;
     int id;
     Miembro propietario;
+    int otrosGastos;
 
     public Moto()
     {
-
+        otrosGastos=0;
     }
 
     /*
@@ -75,6 +76,18 @@ public class Moto
         return true;
     }
 
+
+    /*
+    Funcion AddOtrosGastos
+    Funcion para sumar gastos extra
+    */
+    public void AddOtrosGastos(int otrosGastos)
+    {
+        this.otrosGastos = this.otrosGastos+otrosGastos;
+    }
+
+    
+    
     /*
     Función GetNum
     Lee un numero por pantalla
@@ -130,6 +143,8 @@ public class Moto
         texto = texto + cc + " CC\n";
         texto = texto + ("  Coste:\n");
         texto = texto + coste + "€\n";
+        texto = texto + ("  Gastos adicionales:\n");
+        texto = texto + otrosGastos + "€\n";
         if (mostrarPropietario) {
             texto = texto + ("  Propietario:\n");
             texto = texto + propietario.MostrarMiembro(false);

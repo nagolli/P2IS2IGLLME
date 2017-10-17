@@ -33,7 +33,7 @@ public class Main
         while (isnotend) {
             ImprimeOpciones();
             input = GetNum();
-            if (input > 0 && input < 8) {
+            if (input > 0 && input < 9) {
                 switch (input) {
                     case 1:
                         org.NuevoMiembro(costemaximo);
@@ -54,6 +54,9 @@ public class Main
                         org.MostrarCesiones();
                         break;
                     case 7:
+                        org.AumentarGastosMotos();
+                        break;
+                    case 8:
                         isnotend=!org.Salir();
                         break;
                 }
@@ -97,7 +100,8 @@ public class Main
         System.out.println("4. Listar en pantalla los miembros y motos en posesión");
         System.out.println("5. Listar todas las motos");
         System.out.println("6. Mostrar las cesiones realizadas");
-        System.out.println("7. Salir");
+        System.out.println("7. Añadir gastos adicionales moto");
+        System.out.println("8. Salir");
 
     }
 
