@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Ignacio
+ * @author Ignacio y Lidia
  */
 public class Cesion
 {
@@ -182,6 +182,19 @@ public class Cesion
     public String toString()
     {
         return MostrarCesion();
+    }
+
+    /*
+    Getter de cesor
+    */
+    public Miembro getCesor()
+    {
+        return cesor;
+    }
+
+    public Moto getMoto()
+    {
+        return moto;
     }
     
 }

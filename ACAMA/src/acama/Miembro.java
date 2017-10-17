@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Lidia
+ * @author Lidia e Ignacio
  */
 public class Miembro {
     private String nombre;      //Normalmente se usa como identificador el dni,
@@ -17,9 +17,11 @@ public class Miembro {
     private int nsocio;      //privado con carnets, usaremos el número de socio
     private ArrayList <Moto> motosposesion;
     private static int costemaximo;
+    private int numCesiones;
     
     Miembro(){
         //Constructor vacio por si se crea sin argumentos
+        numCesiones=0;
     }
     
     /*
@@ -31,6 +33,7 @@ public class Miembro {
         this.nsocio=nsocio;
         motosposesion = new ArrayList();
         Miembro.costemaximo=costemaximo;
+        numCesiones=0;
         //Se puede crear miembro sin introducir las motos en la construcción
     }
     Miembro(String nombre, String apellidos, int nsocio, ArrayList <Moto> motosposesion, int costemaximo){
@@ -39,6 +42,7 @@ public class Miembro {
         this.nsocio=nsocio;
         this.motosposesion=motosposesion;
         Miembro.costemaximo=costemaximo;
+        numCesiones=0;
     }
     public String GetNombre(){
         return nombre;
@@ -98,6 +102,7 @@ public class Miembro {
     */
     public void AddMoto(Moto moto){
         motosposesion.add(moto);
+        numCesiones++;
     }
     
     /*
@@ -132,7 +137,7 @@ public class Miembro {
         texto=texto+nombre;
         if(mostrarMotos==true){
             if(motosposesion.size()>0)
-                texto=texto+("\n  Motos: \n");
+                texto=texto+("\n\n  Motos: \n");
             for(int i=0;i<motosposesion.size();i++)
             {
                 texto=texto+motosposesion.get(i).MostrarMoto(false);
@@ -159,6 +164,11 @@ public class Miembro {
         if(sumatotal>costemaximo)
             return false;
         return true;
+    }
+
+    public int getNumCesiones()
+    {
+        return numCesiones;
     }
     
     /*

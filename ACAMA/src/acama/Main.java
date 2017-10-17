@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Lidia
+ * @author Lidia e Ignacio
  */
 public class Main
 {
@@ -33,7 +33,7 @@ public class Main
         while (isnotend) {
             ImprimeOpciones();
             input = GetNum();
-            if (input > 0 && input < 10) {
+            if (input > 0 && input < 11) {
                 switch (input) {
                     case 1:
                         org.NuevoMiembro(costemaximo);
@@ -59,6 +59,11 @@ public class Main
                     case 8:
                         org.EliminarMiembro();
                         break;
+                        
+                    case 9:
+                        org.MiembroMasCedido();
+                        break;
+                        
                     default:
                         isnotend=!org.Salir();
                         break;
@@ -105,7 +110,8 @@ public class Main
         System.out.println("6. Mostrar las cesiones realizadas");
         System.out.println("7. Añadir gastos adicionales moto");
         System.out.println("8. Eliminar miembro");
-        System.out.println("9. Salir");
+        System.out.println("9. Listar usuario con más cesiones");
+        System.out.println("10. Salir");
 
     }
 

@@ -53,7 +53,7 @@ class Acama
 
                 Miembro miembro = new Miembro(nombre, apellidos, input, costemaximo);
                 miembros.add(miembro);
-                OrdenarInsercion(miembros);
+                OrdenarInsercion(miembros,1);
             } else {
                 System.out.println("Socio ya existente");
                 error = true;
@@ -196,12 +196,15 @@ class Acama
     }
 
     /*
-    Función OrdenarInsercion(ArrayList Miembro)
+    Función OrdenarInsercion(ArrayList Miembro,int modo)
     Ordena de menor a mayor el array por numero de socio.
         Se ha escogido este metodo porque es el más eficiente para ordenar un 
     solo miembro
+    
+    Modo: 1 ordena por Nsocio
+          2 ordena por Num cesiones
      */
-    private ArrayList<Miembro> OrdenarInsercion(ArrayList<Miembro> v)
+    private ArrayList<Miembro> OrdenarInsercion(ArrayList<Miembro> v,int modo)
     {
         int i, j;
         int n = v.size();
@@ -319,4 +322,52 @@ class Acama
                  miembros.remove(i);
          }
      }
+     
+     /*
+     Funcion MiembroMasCedido
+     Muestra el miembro que mas cesiones ha recibido a lo largo del tiempo.
+     En caso de empate muestra todos los empatados.
+     Muestra primero las motos en posesion actualmente y posteriormente las 
+     anteriormente poseidas
+     */
+    void MiembroMasCedido()
+    {
+        ArrayList<Miembro> aux=new ArrayList();
+        int max=0;
+        
+        for(int i=0;i<miembros.size();i++)
+        {
+            //System.out.println("DEBUG: NUM CESIONES DE "+i+": "+miembros.get(i).getNumCesiones());
+            if(miembros.get(i).getNumCesiones()>=max)
+            {
+                if(miembros.get(i).getNumCesiones()==max)
+                {
+                    //System.out.println("DEBUG: ADDED");
+                    aux.add(miembros.get(i));
+                }
+                else if(miembros.get(i).getNumCesiones()>max)
+                {
+                    //System.out.println("DEBUG: INICIADO");
+                    aux=new ArrayList();
+                    aux.add(miembros.get(i));
+                    max=miembros.get(i).getNumCesiones();
+                }
+            }
+        }
+        for(int i=0;i<aux.size();i++)
+        {
+            System.out.println(" ");
+            System.out.println(aux.get(i));
+            //System.out.println("DEBUG: USUARIO "+aux.get(i).GetNSocio());
+            for(int j=0;j<cesiones.size();j++)
+            {
+                //System.out.println("DEBUG: CESOR"+cesiones.get(j).getCesor().GetNSocio());
+                if(cesiones.get(j).getCesor()==aux.get(i))
+                {
+                    System.out.println(cesiones.get(j).getMoto().MostrarMoto(false));
+                    //System.out.println("DEBUG: EXITO");
+                }
+            }
+        }
+    }
 }

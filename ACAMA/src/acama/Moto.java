@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Ignacio
+ * @author Ignacio y Lidia
  */
 public class Moto
 {
@@ -146,7 +146,7 @@ public class Moto
         texto = texto + ("  Gastos adicionales:\n");
         texto = texto + otrosGastos + "€\n";
         if (mostrarPropietario) {
-            texto = texto + ("  Propietario:\n");
+            texto = texto + ("\n  Propietario:\n");
             texto = texto + propietario.MostrarMiembro(false);
         }
         return texto;
