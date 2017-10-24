@@ -9,8 +9,9 @@ package polosur;
  *
  * @author Ignacio
  */
-public class PoloSur
+public class MainYConfig
 {
+
 
     /**
      * @param args the command line arguments
