@@ -1,0 +1,45 @@
+Tareas:
+	Implementar la interfaz gráfica
+	Implementar el controlador
+	Implementar el modelo
+	Implementar clase SerVivo e Hijas
+	Implementar Utilidades (Clase de metodos estaticos)
+
+
+SerVivo
+	SerVivo(int IMC,int diaNacimiento) //IMC=0 generará aleatoriamente el IMC
+	int getTipo(); //Devuelve el identificador de raza [0-x] que estará ordenado con el 0 aquello que este en la base de la cadena alimenticia
+	arrayList<int> come(); //Devuelve cuantas presas ha comido de cada ID
+	bool reproducirse();	
+	int getIMC();
+	bool morir();
+	toString();
+	setDieta(int id,int min, int max);
+	setReproduccion(int prob);
+	setMuerte(int prob);
+	modDieta(int id,int min, int max);
+	modReproduccion(int prob);
+	modMuerte(int prob);
+	string cantidad(); //Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
+
+
+	Elementos: static int ID		inicio de objeto
+		   int IMC			inicio de objeto
+	                   int diaNacimiento	inicio de objeto
+		final static int MinIMC 	constante de clase
+		final static int MaxIMC 	constante de clase
+		static ArrayList<ArrayList<int>> dieta 	valor de clase
+		static int probReproduccion 		valor de clase
+		static int probMuerte 		valor de clase
+		static int cantidad			valor de clase
+
+
+
+Utilidades
+	bool rand(int x) // Cierto si random 0-1000 menor o igual que x
+	int rand(int x, int y) // Genera un numero equiprobable entre x e y
+	ArrayList< SerVivo > RadixSort (ArrayList<SerVivo>) 
+		//Al final del dia ordenar por IMC cada raza, para que se coman a los primeros de la lista
+		//Alternativa, cada vez que alguien coma, recorrer todo el vector y comerse al de menor IMC (coste mayor)
+
+Preguntar al profesor si quiere expresamente todo en un unico ArrayList o le vale un ArrayList de arrays
