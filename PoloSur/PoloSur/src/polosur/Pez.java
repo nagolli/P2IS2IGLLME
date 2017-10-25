@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class Pez extends SerVivo
 {
 
-    static int MinIMC; 	//constante de clase
-    static int MaxIMC; 	//constante de clase
-    static int probReproduccion; 		//valor de clase
-    static int probMuerte;                      //valor de clase
-    static ArrayList<ArrayList<Integer>> dieta; //valor de clase
+    private static int MinIMC; 	//constante de clase
+    private static int MaxIMC; 	//constante de clase
+    private static int probReproduccion; 		//valor de clase
+    private static int probMuerte;                      //valor de clase
+    private static ArrayList<ArrayList<Integer>> dieta; //valor de clase
 
     /*
     Nota: Dados los requisitos, no merece la pena heredar las distintas razas de pescados
@@ -27,7 +27,7 @@ public class Pez extends SerVivo
     private static int cantidad; //Bacalaos
     private static int cantidad2;//Rayas
     private static int cantidad3;//Merluzas negras
-    int raza;
+    private int raza;
 
     /*
     *   Constructor de la clase, hereda de SerVivo
@@ -74,11 +74,21 @@ public class Pez extends SerVivo
     }
 
     /*
+    *   Inicia la dieta con los valores por defecto
+     */
+    @Override
+    public void iniDieta(ArrayList<ArrayList<Integer>> dieta)
+    {
+        Pez.dieta=dieta;
+    }
+    
+    /*
     *   Setter de prob de dieta, para la raza de ID id
      */
     @Override
     public void setDieta(int id, int min, int max)
     {
+        System.out.println(Pez.dieta.get(id));
         Pez.dieta.get(id).set(0, min);
         Pez.dieta.get(id).set(1, max);
     }
@@ -133,8 +143,7 @@ public class Pez extends SerVivo
     /*
     * Funcion para inicializar la cantidad de elementos de esta clase
      */
-    @Override
-    public void IniciaCantidad()
+    static public void IniciaCantidad()
     {
         Pez.cantidad = 0;
         Pez.cantidad2 = 0;
@@ -200,4 +209,45 @@ public class Pez extends SerVivo
         }
         return (respuesta+" IMC: "+IMC+" nacido el dia: "+diaNacimiento+"]\n");
     }
+    
+    /*
+    *   Funcion para consultar la raza de este pez
+    */
+    @Override
+    public int getRaza()
+    {
+        return raza;
+    }
+
+    /*
+    *   Funcion para calcular cuantas presas de cada ID van a ser devorados
+     */
+    @Override
+    public ArrayList<Integer> come() //Devuelve cuantas presas ha comido de cada ID
+    {
+        ArrayList<Integer> ret = new ArrayList();
+        for (int i = 0; i < 6; i++) {
+                    ret.add(Utilidades.rand(Pez.dieta.get(i).get(0), Pez.dieta.get(i).get(1)));
+        }
+        return ret;
+    }
+
+    /*
+    *   Función que devuelve si se va a reproducir o no
+     */
+    @Override
+    public boolean reproducirse()
+    {
+        return (Utilidades.rand(Pez.probReproduccion));
+    }
+
+    /*
+    *   Función que devuelve si muere o no
+     */
+    @Override
+    public boolean morir()
+    {
+        return (Utilidades.rand(Pez.probMuerte));
+    }
+
 }

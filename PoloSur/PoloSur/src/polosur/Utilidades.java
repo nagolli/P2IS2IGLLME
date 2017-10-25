@@ -80,8 +80,7 @@ public class Utilidades
     */
     static public boolean rand(int prob)
     {
-        return (aleatorio.nextInt(1000) <= prob);
-
+        return (aleatorio.nextInt(999) < prob);
     }
 
     /*
@@ -89,9 +88,11 @@ public class Utilidades
     */
     static public int rand(int x, int y)
     {
-        return aleatorio.nextInt(y - x) + x;
+        if(y>x)
+            return aleatorio.nextInt(y - x) + x;
+        if(x<y)
+            return aleatorio.nextInt(x - y) + y;
+        return x;
     }
-
-    
 
 }
