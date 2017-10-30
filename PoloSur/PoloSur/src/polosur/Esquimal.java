@@ -102,7 +102,7 @@ public class Esquimal extends SerVivo
     @Override
     public String cantidad()
     {
-        return (String.valueOf(cantidad) + " esquimales");
+        return (String.valueOf(cantidad) + " esquimales\n");
     }
 
     /*

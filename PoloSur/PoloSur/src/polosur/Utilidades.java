@@ -18,11 +18,11 @@ public class Utilidades
     final static Random aleatorio = new Random();
 
     /*
-    *   Funcion RadixSort para ordenar un array de SeresVivos segun su IMC
+    *   Funcion RadixSortIMC para ordenar un array de SeresVivos segun su IMC
     *
     *   Usa Digito y Concatenar
     */
-    static public ArrayList<SerVivo> RadixSort(ArrayList<SerVivo> sort)
+    static public ArrayList<SerVivo> RadixSortIMC(ArrayList<SerVivo> sort)
     {
         int n = sort.size();
         int d;
@@ -39,6 +39,33 @@ public class Utilidades
 
             for (int j = 0; j < n; ++j) {
                 d = Digito(i, sort.get(i).getIMC());
+                aux.get(d).add(sort.get(j));
+            }
+            sort = aux.get(0);
+            for (int j = 1; j < 10; ++j) {
+                ConcatenarVector(sort, aux.get(j));
+            }
+        }
+        return sort;
+    }
+    
+    static public ArrayList<SerVivo> RadixSortRaza(ArrayList<SerVivo> sort)
+    {
+        int n = sort.size();
+        int d;
+        ArrayList< ArrayList<SerVivo>> aux = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            aux.add(new ArrayList());
+        }
+        int iterations = 2;
+
+        for (int i = 0; i <= iterations; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                aux.set(j, new ArrayList());
+            }
+
+            for (int j = 0; j < n; ++j) {
+                d = Digito(i, sort.get(i).getRaza());
                 aux.get(d).add(sort.get(j));
             }
             sort = aux.get(0);

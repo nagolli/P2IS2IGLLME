@@ -18,9 +18,11 @@ public class Polo
     private int krill; //Se mide en millones
     private float temperatura;
     private int dia;
+    private ArrayList<Boolean> flagsDesastres;
 
     Polo(ArrayList<Integer> valoresConfig)
     {
+        flagsDesastres=new ArrayList(2);
         dia = 1;
         animales = new ArrayList();
         for (int i = 0; i < 6; i++) //ID 0 reservado para el krill, no son objetos, pero si objetivos de comida
@@ -54,7 +56,7 @@ public class Polo
         temperatura = valoresConfig.get(12);
 
         for (int i = 1; i < 6; i++) {
-            animales.set(i, Utilidades.RadixSort(animales.get(i)));
+            animales.set(i, Utilidades.RadixSortIMC(animales.get(i)));
         }
         System.out.println(krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
     }
@@ -90,6 +92,7 @@ public class Polo
         }
         modificarKrill();
         modificarTemperatura();
+        ejecutarDesastres();
         dia++;
         System.out.println(dia + ":" + krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
     }
@@ -122,6 +125,35 @@ public class Polo
             }
         }
         return true;
+    }
+    
+    public String Info()
+    {
+        String mensaje="";
+        mensaje+= "Fecha: Dia "+dia;
+        Utilidades.RadixSortRaza(animales.get(1));
+        for(int i=1;i<animales.size();i++)
+            for(int j=0;j<animales.get(i).size();i++)
+            {
+                
+                mensaje += animales.get(i).get(j).toString();
+                
+            }
+        Utilidades.RadixSortIMC(animales.get(1));
+        for(int i=1;i<animales.size();i++)
+        {
+                try{
+                mensaje += animales.get(i).get(0).toString();
+                }catch(Exception e){}
+        }
+        mensaje+=krill+".000000 unidades de Krill\n";
+        mensaje+="Temperatura del agua: "+temperatura+ "ºC\n";
+        for(int i=1;i<flagsDesastres.size();i++)
+        {
+            if(flagsDesastres.get(i))
+                mensaje+=EscribirDesastre(i);
+        }
+        return mensaje;
     }
 
     private void ProcesoReproducirse(int i, int j)
@@ -195,16 +227,41 @@ public class Polo
             }
         }
     }
-
+    
     /******************    DESASTRES   ******************/
     
-    public void calentamientoGlobal()
+    public void ActivarDesastre(int i)
     {
-        temperatura+=2;
+        flagsDesastres.set(i-1, true);
     }
     
-    public void buquesDePescaMayor()
+    private String EscribirDesastre(int i)
     {
+        switch(i)
+        {
+            case 1: return "Desastre: Calentamiento global";
+            case 2: return "Desastre: Buques de pesca mayor";
+            default: return "Desastre no identificado: "+i;
+        }
+    }
+    
+    private void ejecutarDesastres()
+    {
+        if(flagsDesastres.get(1))
+            calentamientoGlobal();
+        if(flagsDesastres.get(2))
+            buquesDePescaMayor();
+    }
+    
+    private void calentamientoGlobal()   //FLAG 1
+    {
+        temperatura+=2;
+        flagsDesastres.set(0, false);
+    }
+    
+    private void buquesDePescaMayor()    //FLAG 2
+    {
+        flagsDesastres.set(1, false);
         for(int i=0;i<animales.get(3).size();i++)
         {
             if (Utilidades.rand(150)) {

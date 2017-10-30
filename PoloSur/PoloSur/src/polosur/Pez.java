@@ -127,7 +127,7 @@ public class Pez extends SerVivo
     @Override
     public String cantidad() //Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
     {
-        return (String.valueOf(cantidad + cantidad2 + cantidad3) + " esquimales que son: " + cantidad + " bacalaos, " + cantidad2 + " rayas y " + cantidad3 + " merluzas negras");
+        return (String.valueOf(cantidad + cantidad2 + cantidad3) + " esquimales que son: " + cantidad + " bacalaos, " + cantidad2 + " rayas y " + cantidad3 + " merluzas negras\n");
     }
 
     /*
