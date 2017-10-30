@@ -129,9 +129,19 @@ public class Polo
         switch (i) {
             case 1:
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                //Descomentar para que cada pez ponga 4 crias, mejora muchisimo la supervivencia de los mismos
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                j=j+3;
+                //
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
+                //Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
+                animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
+                j++;
+                //
                 break;
             case 3:
                 animales.get(3).add(j, new Oso(animales.get(3).get(j).getIMC(), dia));
@@ -186,4 +196,33 @@ public class Polo
         }
     }
 
+    /******************    DESASTRES   ******************/
+    
+    public void calentamientoGlobal()
+    {
+        temperatura+=2;
+    }
+    
+    public void buquesDePescaMayor()
+    {
+        for(int i=0;i<animales.get(3).size();i++)
+        {
+            if (Utilidades.rand(150)) {
+                            animales.get(3).get(i).destruir();
+                            animales.get(3).remove(i);
+                            i--;
+                        }
+        }
+        for(int i=0;i<animales.get(4).size();i++)
+        {
+            if (Utilidades.rand(200)) {
+                            animales.get(4).get(i).destruir();
+                            animales.get(4).remove(4);
+                            i--;
+                        }
+        }
+    }
+    
 }
+
+

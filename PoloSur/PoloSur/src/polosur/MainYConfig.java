@@ -49,7 +49,7 @@ public class MainYConfig
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min krill, max krill (en millones)
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min peces, max peces
             dietaMorsa.add(new ArrayList(){{add(1);add(2);}});//min focas, max focas
-            dietaMorsa.add(new ArrayList(){{add(0);add(2);}});//min osos, max osos
+            dietaMorsa.add(new ArrayList(){{add(0);add(2/1);}});//min osos, max osos
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min morsas, max morsas
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min esquimales, max esquimales
             //Alimentacion diaria de osos
@@ -77,8 +77,8 @@ public class MainYConfig
             valores.add(65000);valores.add(75000);//Min y Max de krill inicial (en millones)
             valores.add(7000);valores.add(8000);  //Min y Max de peces iniciales
             valores.add(260);valores.add(290);    //Min y Max de focas iniciales
-            valores.add(42);valores.add(48);      //Min y Max de morsas iniciales
-            valores.add(22);valores.add(28);      //Min y Max de osos polares iniciales
+            valores.add(22);valores.add(28);      //Min y Max de morsas iniciales
+            valores.add(42);valores.add(48);      //Min y Max de osos polares iniciales
             valores.add(12);valores.add(14);      //Min y Max de esquimales iniciales
             valores.add(4);                       //Temperatura inicial del agua
             
