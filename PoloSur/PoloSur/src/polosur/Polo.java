@@ -19,10 +19,14 @@ public class Polo
     private float temperatura;
     private int dia;
     private ArrayList<Boolean> flagsDesastres;
+    private VentanaPrincipal vista;
 
-    Polo(ArrayList<Integer> valoresConfig)
+    Polo(ArrayList<Integer> valoresConfig, VentanaPrincipal vista)
     {
-        flagsDesastres=new ArrayList(2);
+        this.vista=vista;
+        flagsDesastres=new ArrayList(); 
+        for(int d=0;d<2;d++)    //< Modificar al añadir desastres
+                flagsDesastres.add(false);
         dia = 1;
         animales = new ArrayList();
         for (int i = 0; i < 6; i++) //ID 0 reservado para el krill, no son objetos, pero si objetivos de comida
@@ -65,25 +69,21 @@ public class Polo
     {
         int i=0;
         for (i = 0; i < 6; i++) {
-            for (int j = 0; j < animales.get(i).size(); j++) {
+            for (int j = animales.get(i).size()-1; j >= 0 ; j--) {
 
                 if (!procesoComer(i, j)) {
                     animales.get(i).get(j).destruir();
                     animales.get(i).remove(j);
-                    j--;
                 } else {
                     if (animales.get(i).size() > 0 && j < animales.get(i).size()) {
 
                         if (animales.get(i).get(j).reproducirse()) {
                             ProcesoReproducirse(i, j);
-                            j++;
                         }
                         if(j < animales.get(i).size())
                         if (animales.get(i).get(j).morir()) {
                             animales.get(i).get(j).destruir();
                             animales.get(i).remove(j);
-                            j--;
-                            
                         }
                     }
                 }
@@ -93,6 +93,11 @@ public class Polo
         modificarKrill();
         modificarTemperatura();
         ejecutarDesastres();
+        for(i=0;i<animales.size();i++)
+        {
+            if(animales.get(i).size()==0)
+                Utilidades.MostrarExtincion(i,vista,dia);
+        }
         dia++;
         System.out.println(dia + ":" + krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
     }
@@ -161,18 +166,17 @@ public class Polo
         switch (i) {
             case 1:
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                //Descomentar para que cada pez ponga 4 crias, mejora muchisimo la supervivencia de los mismos
+                //Descomentar para que cada pez ponga 5 crias, mejora muchisimo la supervivencia de los mismos
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                j=j+3;
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 //
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
                 //Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                j++;
                 //
                 break;
             case 3:
@@ -247,9 +251,9 @@ public class Polo
     
     private void ejecutarDesastres()
     {
-        if(flagsDesastres.get(1))
+        if(flagsDesastres.get(0))
             calentamientoGlobal();
-        if(flagsDesastres.get(2))
+        if(flagsDesastres.get(1))
             buquesDePescaMayor();
     }
     

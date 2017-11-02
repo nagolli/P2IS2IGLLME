@@ -248,4 +248,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
+    static Polo modelo;
+    
+    void addModelo(Polo modelo)
+    {
+        this.modelo=modelo;
+    }
 }

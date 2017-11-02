@@ -5,8 +5,10 @@
  */
 package polosur;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -120,6 +122,34 @@ public class Utilidades
         if(x<y)
             return aleatorio.nextInt(x - y) + y;
         return x;
+    }
+
+    static void MostrarExtincion(int i,Component frame, int d)
+    {
+        String mensaje="";
+        switch(i)
+        {
+            case 0:
+                mensaje="El krill ha llegado al limite el dia "+d+".";
+                break;
+            case 1:
+                mensaje="Los peces se han extinguido el dia "+d+", es el fin del polo.";
+                break;
+            case 2:
+                mensaje="Las focas se han extinguido el dia "+d+".";
+                break;
+            case 3:
+                mensaje="Los osos polares se han extinguido el dia "+d+".";
+                break;
+            case 4:
+                mensaje="Las morsas se han extinguido el dia "+d+".";
+                break;
+            case 5:
+                mensaje="Los esquimales han muerto el dia "+d+".";
+                break;
+        }
+        //default title and icon
+        JOptionPane.showMessageDialog(frame,mensaje);
     }
 
 }

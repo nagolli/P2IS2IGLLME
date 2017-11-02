@@ -99,10 +99,16 @@ public class MainYConfig
     {
         ArrayList<Integer> valores;
         valores=Config();
-        Polo modelo=new Polo(valores);
+        VentanaPrincipal vista=new VentanaPrincipal();
+        Polo modelo=new Polo(valores, vista);
+        vista.addModelo(modelo);
+        /*
         modelo.DiezDias();
         modelo.DiezDias();
         System.exit(0);
+        */
+        vista.setVisible(true);
+
     }
     
 }
