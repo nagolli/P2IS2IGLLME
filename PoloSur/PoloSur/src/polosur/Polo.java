@@ -21,6 +21,9 @@ public class Polo
     private ArrayList<Boolean> flagsDesastres;
     private VentanaPrincipal vista;
 
+    /*
+    * Constructor de Polo
+    */
     Polo(ArrayList<Integer> valoresConfig, VentanaPrincipal vista)
     {
         this.vista=vista;
@@ -65,6 +68,9 @@ public class Polo
         System.out.println(krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
     }
 
+    /*
+    * Funcion para pasar un dia
+    */
     public void UnDia()
     {
         int i=0;
@@ -102,6 +108,9 @@ public class Polo
         System.out.println(dia + ":" + krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
     }
 
+    /*
+    * Funcion para pasar diez dias
+    */
     public void DiezDias()
     {
         for (int i = 0; i < 10; i++) {
@@ -109,6 +118,10 @@ public class Polo
         }
     }
 
+    /*
+    * Funcion para obtener cuanto va a comer un ser vivo y eliminarlo del array
+    * Devuelve si el animal ha conseguido alimentarse o no
+    */
     private boolean procesoComer(int a, int b)
     {
         ArrayList<Integer> muertes;
@@ -131,36 +144,10 @@ public class Polo
         }
         return true;
     }
-    
-    public String Info()
-    {
-        String mensaje="";
-        mensaje+= "Fecha: Dia "+dia;
-        Utilidades.RadixSortRaza(animales.get(1));
-        for(int i=1;i<animales.size();i++)
-            for(int j=0;j<animales.get(i).size();i++)
-            {
-                
-                mensaje += animales.get(i).get(j).toString();
-                
-            }
-        Utilidades.RadixSortIMC(animales.get(1));
-        for(int i=1;i<animales.size();i++)
-        {
-                try{
-                mensaje += animales.get(i).get(0).toString();
-                }catch(Exception e){}
-        }
-        mensaje+=krill+".000000 unidades de Krill\n";
-        mensaje+="Temperatura del agua: "+temperatura+ "ºC\n";
-        for(int i=1;i<flagsDesastres.size();i++)
-        {
-            if(flagsDesastres.get(i))
-                mensaje+=EscribirDesastre(i);
-        }
-        return mensaje;
-    }
 
+    /*
+    * Funcion para que en caso de que un ser vivo se reproduzca, se añadan sus crias al array de seres vivos
+    */
     private void ProcesoReproducirse(int i, int j)
     {
         switch (i) {
@@ -192,6 +179,9 @@ public class Polo
 
     }
 
+    /*
+    * Funcion para aplicar la variación de temperatura, no depende de nada
+    */
     private void modificarTemperatura()
     {
         if (temperatura <= 3) {
@@ -217,6 +207,9 @@ public class Polo
         }
     }
 
+    /*
+    * Funcion para aplicar la variación de krill segun la temperatura
+    */
     private void modificarKrill()
     {
         if (temperatura < 5.5f && temperatura >= 3f) {
@@ -230,6 +223,38 @@ public class Polo
                 krill += 12000;
             }
         }
+    }
+    
+    /*
+    * Funcion para obtener toda la información del polo
+    */
+    public String Info()
+    {
+        String mensaje="";
+        mensaje+= "Fecha: Dia "+dia;
+        Utilidades.RadixSortRaza(animales.get(1));
+        for(int i=1;i<animales.size();i++)
+            for(int j=0;j<animales.get(i).size();i++)
+            {
+                
+                mensaje += animales.get(i).get(j).toString();
+                
+            }
+        Utilidades.RadixSortIMC(animales.get(1));
+        for(int i=1;i<animales.size();i++)
+        {
+                try{
+                mensaje += animales.get(i).get(0).toString();
+                }catch(Exception e){}
+        }
+        mensaje+=krill+".000000 unidades de Krill\n";
+        mensaje+="Temperatura del agua: "+temperatura+ "ºC\n";
+        for(int i=1;i<flagsDesastres.size();i++)
+        {
+            if(flagsDesastres.get(i))
+                mensaje+=EscribirDesastre(i);
+        }
+        return mensaje;
     }
     
     /******************    DESASTRES   ******************/

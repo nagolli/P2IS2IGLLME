@@ -21,6 +21,7 @@ public class Utilidades
 
     /*
     *   Funcion RadixSortIMC para ordenar un array de SeresVivos segun su IMC
+    *   No desordena la ordenación anterior
     *
     *   Usa Digito y Concatenar
     */
@@ -51,6 +52,12 @@ public class Utilidades
         return sort;
     }
     
+    /*
+    *   Funcion RadixSortRaza para ordenar un array de SeresVivos segun su raza
+    *   No desordena la ordenación anterior
+    *
+    *   Usa Digito y Concatenar
+    */
     static public ArrayList<SerVivo> RadixSortRaza(ArrayList<SerVivo> sort)
     {
         int n = sort.size();
@@ -124,6 +131,10 @@ public class Utilidades
         return x;
     }
 
+    
+    /*
+    Funcion para mostrar un Dialog Pane indicando la extinción de una especie    
+    */
     static void MostrarExtincion(int i,Component frame, int d)
     {
         String mensaje="";
