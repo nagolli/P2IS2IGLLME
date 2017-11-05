@@ -20,6 +20,7 @@ public class Polo
     private int dia;
     private ArrayList<Boolean> flagsDesastres;
     private VentanaPrincipal vista;
+    private ArrayList<Boolean> extintos;
 
     /*
     * Constructor de Polo
@@ -31,10 +32,11 @@ public class Polo
         for(int d=0;d<2;d++)    //< Modificar al añadir desastres
                 flagsDesastres.add(false);
         dia = 1;
-        animales = new ArrayList();
+        animales = new ArrayList();extintos = new ArrayList();
         for (int i = 0; i < 6; i++) //ID 0 reservado para el krill, no son objetos, pero si objetivos de comida
         {
             animales.add(new ArrayList());
+            extintos.add(false);
         }
         SerVivo.IniciaCantidad();
         int randNum = Utilidades.rand(valoresConfig.get(0), valoresConfig.get(1));
@@ -96,13 +98,18 @@ public class Polo
 
             }
         }
+            if(krill==0)
+                Utilidades.MostrarExtincion(0,vista,dia);
         modificarKrill();
         modificarTemperatura();
         ejecutarDesastres();
-        for(i=0;i<animales.size();i++)
+        for(i=1;i<animales.size();i++)
         {
-            if(animales.get(i).size()==0)
+            if(animales.get(i).size()==0&&!extintos.get(i))
+            {
+                extintos.set(i, true);
                 Utilidades.MostrarExtincion(i,vista,dia);
+            }
         }
         dia++;
         System.out.println(dia + ":" + krill + "," + animales.get(1).size() + "," + animales.get(2).size() + "," + animales.get(3).size() + "," + animales.get(4).size() + "," + animales.get(5).size());
@@ -153,18 +160,18 @@ public class Polo
         switch (i) {
             case 1:
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                //Descomentar para que cada pez ponga 5 crias, mejora muchisimo la supervivencia de los mismos
+                /*Descomentar para que cada pez ponga 5 crias, mejora muchisimo la supervivencia de los mismos
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                //
+                */
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                //Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
+                /*Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                //
+                */
                 break;
             case 3:
                 animales.get(3).add(j, new Oso(animales.get(3).get(j).getIMC(), dia));

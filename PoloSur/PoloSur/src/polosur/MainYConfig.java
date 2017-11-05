@@ -16,7 +16,7 @@ public class MainYConfig
     /*
     *   Función de inicializado de datos
     */
-    static private ArrayList<Integer> Config()
+    static public ArrayList<Integer> Config()
     {
         Pez pez=new Pez(1,1,1);
         Foca foca=new Foca(1,1);
@@ -82,11 +82,6 @@ public class MainYConfig
             valores.add(12);valores.add(14);      //Min y Max de esquimales iniciales
             valores.add(4);                       //Temperatura inicial del agua
             
-        pez.destruir();
-        foca.destruir();
-        morsa.destruir();
-        oso.destruir();
-        hombre.destruir();
         
         return valores;
     }
