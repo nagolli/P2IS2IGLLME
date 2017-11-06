@@ -22,8 +22,8 @@ public class VistaDetalles extends javax.swing.JFrame {
         fecha.setText(elementos.get(0));
         animales.setText(elementos.get(1));
         esquimales.setText(elementos.get(2));
-        osos.setText(elementos.get(3));
-        morsas.setText(elementos.get(4));
+        osos.setText(elementos.get(4));
+        morsas.setText(elementos.get(3));
         focas.setText(elementos.get(5));
         peces.setText(elementos.get(6));
         bacalao.setText(elementos.get(7));
@@ -52,7 +52,6 @@ public class VistaDetalles extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         kp = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        animales = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -69,11 +68,15 @@ public class VistaDetalles extends javax.swing.JFrame {
         bacalao = new javax.swing.JTextField();
         merluza = new javax.swing.JTextField();
         raya = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        animales = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
-        catastrofes = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        catastrofes = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Fecha:");
 
@@ -124,13 +127,6 @@ public class VistaDetalles extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Animales Vivos"));
 
-        animales.setEditable(false);
-        animales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                animalesActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Esquimales:");
 
         jLabel5.setText("Morsas:");
@@ -163,14 +159,15 @@ public class VistaDetalles extends javax.swing.JFrame {
 
         raya.setEditable(false);
 
+        animales.setEditable(false);
+        animales.setColumns(20);
+        animales.setRows(5);
+        jScrollPane1.setViewportView(animales);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(animales)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +203,12 @@ public class VistaDetalles extends javax.swing.JFrame {
                             .addComponent(merluza)
                             .addComponent(raya, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(49, 49, 49))
+            .addComponent(jScrollPane1)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(animales, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -266,16 +264,19 @@ public class VistaDetalles extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Catástrofes"));
 
         catastrofes.setEditable(false);
+        catastrofes.setColumns(20);
+        catastrofes.setRows(5);
+        jScrollPane2.setViewportView(catastrofes);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(catastrofes)
+            .addComponent(jScrollPane2)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(catastrofes, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
         jButton1.setText("Atrás");
@@ -314,10 +315,6 @@ public class VistaDetalles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void animalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animalesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_animalesActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         padre.setVisible(true);
         dispose();
@@ -325,9 +322,9 @@ public class VistaDetalles extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField animales;
+    private javax.swing.JTextArea animales;
     private javax.swing.JTextField bacalao;
-    private javax.swing.JTextField catastrofes;
+    private javax.swing.JTextArea catastrofes;
     private javax.swing.JTextField esquimales;
     private javax.swing.JTextField fecha;
     private javax.swing.JTextField focas;
@@ -347,6 +344,8 @@ public class VistaDetalles extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField kp;
     private javax.swing.JTextField merluza;
     private javax.swing.JTextField morsas;
