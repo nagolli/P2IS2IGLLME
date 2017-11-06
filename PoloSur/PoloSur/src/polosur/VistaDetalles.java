@@ -27,8 +27,8 @@ public class VistaDetalles extends javax.swing.JFrame {
         focas.setText(elementos.get(5));
         peces.setText(elementos.get(6));
         bacalao.setText(elementos.get(7));
-        merluza.setText(elementos.get(8));
-        raya.setText(elementos.get(9));
+        raya.setText(elementos.get(8));
+        merluza.setText(elementos.get(9));
         temperatura.setText(elementos.get(10));
         kp.setText(elementos.get(11));
         catastrofes.setText(elementos.get(12));

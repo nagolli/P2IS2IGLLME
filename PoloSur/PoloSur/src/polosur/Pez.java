@@ -34,10 +34,15 @@ public class Pez extends SerVivo
      */
     public Pez(int IMC, int diaNacimiento, int raza)
     {
-        super(IMC, diaNacimiento);
+        super(diaNacimiento);
+        if (IMC > 0 && IMC < 100) {
+            this.IMC = IMC;
+        } else {
+            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
+        }
         ID = 1;
         if (raza < 1 || raza > 3) {
-            this.raza = Utilidades.rand(1, 4);
+            this.raza = Utilidades.rand(1, 3);
         } else {
             this.raza = raza;
         }

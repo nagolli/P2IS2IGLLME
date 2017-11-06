@@ -26,7 +26,12 @@ public class Morsa extends SerVivo
     */
     public Morsa(int IMC, int diaNacimiento)
     {
-        super(IMC, diaNacimiento);
+        super(diaNacimiento);
+        if (IMC > 0 && IMC < 100) {
+            this.IMC = IMC;
+        } else {
+            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
+        }
         Morsa.cantidad=cantidad+1;
         ID=4;
     }

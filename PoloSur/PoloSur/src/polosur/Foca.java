@@ -26,7 +26,12 @@ public class Foca extends SerVivo
     */
     public Foca(int IMC, int diaNacimiento)
     {
-        super(IMC, diaNacimiento);
+        super(diaNacimiento);
+        if (IMC > 0 && IMC < 100) {
+            this.IMC = IMC;
+        } else {
+            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
+        }
         Foca.cantidad=cantidad+1;
         ID=2;
     }

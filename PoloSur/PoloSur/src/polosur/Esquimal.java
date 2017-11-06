@@ -26,7 +26,12 @@ public class Esquimal extends SerVivo
      */
     public Esquimal(int IMC, int diaNacimiento)
     {
-        super(IMC, diaNacimiento);
+        super(diaNacimiento);
+        if (IMC > 0 && IMC < 100) {
+            this.IMC = IMC;
+        } else {
+            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
+        }
         Esquimal.cantidad = cantidad + 1;
         ID = 5;
     }

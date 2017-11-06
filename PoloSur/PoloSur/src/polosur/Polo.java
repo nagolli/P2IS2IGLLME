@@ -24,15 +24,18 @@ public class Polo
 
     /*
     * Constructor de Polo
-    */
+     */
     Polo(ArrayList<Integer> valoresConfig, VentanaPrincipal vista)
     {
-        this.vista=vista;
-        flagsDesastres=new ArrayList(); 
-        for(int d=0;d<2;d++)    //< Modificar al añadir desastres
-                flagsDesastres.add(false);
+        this.vista = vista;
+        flagsDesastres = new ArrayList();
+        for (int d = 0; d < 2; d++) //< Modificar al añadir desastres
+        {
+            flagsDesastres.add(false);
+        }
         dia = 1;
-        animales = new ArrayList();extintos = new ArrayList();
+        animales = new ArrayList();
+        extintos = new ArrayList();
         for (int i = 0; i < 6; i++) //ID 0 reservado para el krill, no son objetos, pero si objetivos de comida
         {
             animales.add(new ArrayList());
@@ -72,12 +75,12 @@ public class Polo
 
     /*
     * Funcion para pasar un dia
-    */
+     */
     public void UnDia()
     {
-        int i=0;
+        int i = 0;
         for (i = 0; i < 6; i++) {
-            for (int j = animales.get(i).size()-1; j >= 0 ; j--) {
+            for (int j = animales.get(i).size() - 1; j >= 0; j--) {
 
                 if (!procesoComer(i, j)) {
                     animales.get(i).get(j).destruir();
@@ -88,27 +91,27 @@ public class Polo
                         if (animales.get(i).get(j).reproducirse()) {
                             ProcesoReproducirse(i, j);
                         }
-                        if(j < animales.get(i).size())
-                        if (animales.get(i).get(j).morir()) {
-                            animales.get(i).get(j).destruir();
-                            animales.get(i).remove(j);
+                        if (j < animales.get(i).size()) {
+                            if (animales.get(i).get(j).morir()) {
+                                animales.get(i).get(j).destruir();
+                                animales.get(i).remove(j);
+                            }
                         }
                     }
                 }
 
             }
         }
-            if(krill==0)
-                Utilidades.MostrarExtincion(0,vista,dia);
+        if (krill == 0) {
+            Utilidades.MostrarExtincion(0, vista, dia);
+        }
         modificarKrill();
         modificarTemperatura();
         ejecutarDesastres();
-        for(i=1;i<animales.size();i++)
-        {
-            if(animales.get(i).size()==0&&!extintos.get(i))
-            {
+        for (i = 1; i < animales.size(); i++) {
+            if (animales.get(i).size() == 0 && !extintos.get(i)) {
                 extintos.set(i, true);
-                Utilidades.MostrarExtincion(i,vista,dia);
+                Utilidades.MostrarExtincion(i, vista, dia);
             }
         }
         dia++;
@@ -117,7 +120,7 @@ public class Polo
 
     /*
     * Funcion para pasar diez dias
-    */
+     */
     public void DiezDias()
     {
         for (int i = 0; i < 10; i++) {
@@ -128,7 +131,7 @@ public class Polo
     /*
     * Funcion para obtener cuanto va a comer un ser vivo y eliminarlo del array
     * Devuelve si el animal ha conseguido alimentarse o no
-    */
+     */
     private boolean procesoComer(int a, int b)
     {
         ArrayList<Integer> muertes;
@@ -154,7 +157,7 @@ public class Polo
 
     /*
     * Funcion para que en caso de que un ser vivo se reproduzca, se añadan sus crias al array de seres vivos
-    */
+     */
     private void ProcesoReproducirse(int i, int j)
     {
         switch (i) {
@@ -165,13 +168,13 @@ public class Polo
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                */
+                 */
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
                 /*Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                */
+                 */
                 break;
             case 3:
                 animales.get(3).add(j, new Oso(animales.get(3).get(j).getIMC(), dia));
@@ -188,7 +191,7 @@ public class Polo
 
     /*
     * Funcion para aplicar la variación de temperatura, no depende de nada
-    */
+     */
     private void modificarTemperatura()
     {
         if (temperatura <= 3) {
@@ -216,7 +219,7 @@ public class Polo
 
     /*
     * Funcion para aplicar la variación de krill segun la temperatura
-    */
+     */
     private void modificarKrill()
     {
         if (temperatura < 5.5f && temperatura >= 3f) {
@@ -231,109 +234,110 @@ public class Polo
             }
         }
     }
-    
+
     /*
     * Funcion para obtener toda la información del polo
-    */
+     */
     public ArrayList<String> Info()
     {
+        ArrayList<SerVivo> peces = new ArrayList();
         ArrayList<String> cadenas = new ArrayList();
-        String mensaje="";
-        for(int i=0;i<13;i++)
+        String mensaje = "";
+        for (int i = 0; i < 13; i++) {
             cadenas.add(mensaje);
-        cadenas.set(0, "Dia "+dia);
-        Utilidades.RadixSortRaza(animales.get(1));
-        for(int i=1;i<animales.size();i++)
-            for(int j=0;j<animales.get(i).size();j++)
-            {
-                mensaje += animales.get(i).get(j).toString()+"\n";
-                
+        }
+        cadenas.set(0, "Dia " + dia);
+        peces = Utilidades.RadixSortRaza(animales.get(1));
+        for (int j = 0; j < peces.size(); j++) {
+            mensaje += peces.get(j).toString();
+        }
+        for (int i = 2; i < animales.size(); i++) {
+            for (int j = 0; j < animales.get(i).size(); j++) {
+                mensaje += animales.get(i).get(j).toString();
             }
+        }
         cadenas.set(1, mensaje);
-        Utilidades.RadixSortIMC(animales.get(1));
-        
-        for(int i=1;i<animales.size();i++)
-        {
-                try{
-                    cadenas.set(7-i,animales.get(i).get(0).cantidad(0));
-                }catch(Exception e){
-                    cadenas.set(7-i,"0");
-                }
+
+        for (int i = 1; i < animales.size(); i++) {
+            try {
+                cadenas.set(7 - i, animales.get(i).get(0).cantidad(0));
+            } catch (Exception e) {
+                cadenas.set(7 - i, "0");
+            }
         }
-        for(int i=1;i<4;i++)
-        {
-            try{
-                    cadenas.set(6+i,animales.get(1).get(0).cantidad(i));
-                }catch(Exception e){
-                    System.out.println(e);
-                    cadenas.set(6+i,"0");
-                }
+        for (int i = 1; i < 4; i++) {
+            try {
+                cadenas.set(6 + i, animales.get(1).get(0).cantidad(i));
+            } catch (Exception e) {
+                cadenas.set(6 + i, "0");
+            }
         }
-        
-        cadenas.set(11,krill+".000000");
-        cadenas.set(10,temperatura+ "ºC");
-        mensaje="";
-        for(int i=1;i<flagsDesastres.size();i++)
-        {
-            if(flagsDesastres.get(i))
-                mensaje+=EscribirDesastre(i);
+
+        cadenas.set(11, krill + ".000000");
+        cadenas.set(10, temperatura + "ºC");
+        mensaje = "";
+        for (int i = 1; i < flagsDesastres.size(); i++) {
+            if (flagsDesastres.get(i)) {
+                mensaje += EscribirDesastre(i);
+            }
         }
         cadenas.set(12, mensaje);
         return cadenas;
     }
-    
-    /******************    DESASTRES   ******************/
-    
+
+    /**
+     * **************** DESASTRES   *****************
+     */
     public void ActivarDesastre(int i)
     {
-        flagsDesastres.set(i-1, true);
+        flagsDesastres.set(i - 1, true);
     }
-    
+
     private String EscribirDesastre(int i)
     {
-        switch(i)
-        {
-            case 1: return "Desastre: Calentamiento global";
-            case 2: return "Desastre: Buques de pesca mayor";
-            default: return "Desastre no identificado: "+i;
+        switch (i) {
+            case 1:
+                return "Desastre: Calentamiento global";
+            case 2:
+                return "Desastre: Buques de pesca mayor";
+            default:
+                return "Desastre no identificado: " + i;
         }
     }
-    
+
     private void ejecutarDesastres()
     {
-        if(flagsDesastres.get(0))
+        if (flagsDesastres.get(0)) {
             calentamientoGlobal();
-        if(flagsDesastres.get(1))
+        }
+        if (flagsDesastres.get(1)) {
             buquesDePescaMayor();
+        }
     }
-    
+
     private void calentamientoGlobal()   //FLAG 1
     {
-        temperatura+=2;
+        temperatura += 2;
         flagsDesastres.set(0, false);
     }
-    
+
     private void buquesDePescaMayor()    //FLAG 2
     {
         flagsDesastres.set(1, false);
-        for(int i=0;i<animales.get(3).size();i++)
-        {
+        for (int i = 0; i < animales.get(3).size(); i++) {
             if (Utilidades.rand(150)) {
-                            animales.get(3).get(i).destruir();
-                            animales.get(3).remove(i);
-                            i--;
-                        }
+                animales.get(3).get(i).destruir();
+                animales.get(3).remove(i);
+                i--;
+            }
         }
-        for(int i=0;i<animales.get(4).size();i++)
-        {
+        for (int i = 0; i < animales.get(4).size(); i++) {
             if (Utilidades.rand(200)) {
-                            animales.get(4).get(i).destruir();
-                            animales.get(4).remove(4);
-                            i--;
-                        }
+                animales.get(4).get(i).destruir();
+                animales.get(4).remove(4);
+                i--;
+            }
         }
     }
-    
+
 }
-
-

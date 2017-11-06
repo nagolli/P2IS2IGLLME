@@ -35,13 +35,13 @@ public class Utilidades
         }
         int iterations = 2;
 
-        for (int i = 0; i <= iterations; ++i) {
+        for (int i = 0; i < iterations; ++i) {
             for (int j = 0; j < 10; ++j) {
                 aux.set(j, new ArrayList());
             }
 
             for (int j = 0; j < n; ++j) {
-                d = Digito(i, sort.get(i).getIMC());
+                d = Digito(i, sort.get(j).getIMC());
                 aux.get(d).add(sort.get(j));
             }
             sort = aux.get(0);
@@ -74,7 +74,7 @@ public class Utilidades
             }
 
             for (int j = 0; j < n; ++j) {
-                d = Digito(i, sort.get(i).getRaza());
+                d = Digito(i, sort.get(j).getRaza());
                 aux.get(d).add(sort.get(j));
             }
             sort = aux.get(0);
@@ -125,9 +125,9 @@ public class Utilidades
     static public int rand(int x, int y)
     {
         if(y>x)
-            return aleatorio.nextInt(y - x) + x;
+            return (aleatorio.nextInt(y + 1 - x) + x);
         if(x<y)
-            return aleatorio.nextInt(x - y) + y;
+            return (aleatorio.nextInt(x + 1 - y) + y);
         return x;
     }
 

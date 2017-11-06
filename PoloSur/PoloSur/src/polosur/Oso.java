@@ -26,7 +26,12 @@ public class Oso extends SerVivo
     */
     public Oso(int IMC, int diaNacimiento)
     {
-        super(IMC, diaNacimiento);
+        super(diaNacimiento);
+        if (IMC > 0 && IMC < 100) {
+            this.IMC = IMC;
+        } else {
+            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
+        }
         Oso.cantidad=cantidad+1;
         ID=3;
     }

@@ -24,13 +24,8 @@ public class SerVivo
     /*
     *   Constructor por defecto
      */
-    SerVivo(int IMC, int diaNacimiento) //IMC=0 generará aleatoriamente el IMC
+    SerVivo(int diaNacimiento) //IMC=0 generará aleatoriamente el IMC
     {
-        if (IMC < 1 || IMC > 99) {
-            this.IMC = IMC;
-        } else {
-            this.IMC = Utilidades.rand(MinIMC, MaxIMC);
-        }
         this.diaNacimiento = diaNacimiento;
     }
 
@@ -93,10 +88,10 @@ public class SerVivo
             case 2:
                 respuesta = "[Foca";
                 break;
-            case 3:
+            case 4:
                 respuesta = "[Morsa";
                 break;
-            case 4:
+            case 3:
                 respuesta = "[Oso Polar";
                 break;
             case 5:
