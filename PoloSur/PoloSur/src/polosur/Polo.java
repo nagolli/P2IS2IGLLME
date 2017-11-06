@@ -244,10 +244,9 @@ public class Polo
         cadenas.set(0, "Dia "+dia);
         Utilidades.RadixSortRaza(animales.get(1));
         for(int i=1;i<animales.size();i++)
-            for(int j=0;j<animales.get(i).size();i++)
+            for(int j=0;j<animales.get(i).size();j++)
             {
-                System.out.println(i+" "+j);
-                mensaje += animales.get(i).get(j).toString();
+                mensaje += animales.get(i).get(j).toString()+"\n";
                 
             }
         cadenas.set(1, mensaje);
@@ -264,13 +263,14 @@ public class Polo
         for(int i=1;i<4;i++)
         {
             try{
-                    cadenas.set(6+i,animales.get(i).get(0).cantidad(i));
+                    cadenas.set(6+i,animales.get(1).get(0).cantidad(i));
                 }catch(Exception e){
+                    System.out.println(e);
                     cadenas.set(6+i,"0");
                 }
         }
         
-        cadenas.set(11,krill+".000000 unidades");
+        cadenas.set(11,krill+".000000");
         cadenas.set(10,temperatura+ "ºC");
         mensaje="";
         for(int i=1;i<flagsDesastres.size();i++)

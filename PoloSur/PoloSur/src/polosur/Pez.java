@@ -37,11 +37,11 @@ public class Pez extends SerVivo
         super(IMC, diaNacimiento);
         ID = 1;
         if (raza < 1 || raza > 3) {
-            this.raza = Utilidades.rand(1, 3);
+            this.raza = Utilidades.rand(1, 4);
         } else {
             this.raza = raza;
         }
-        switch (raza) {
+        switch (this.raza) {
             case 1:
                 Pez.cantidad = cantidad + 1;
                 break;
@@ -50,6 +50,10 @@ public class Pez extends SerVivo
                 break;
             case 3:
                 Pez.cantidad3 = cantidad3 + 1;
+                break;
+            default:
+                this.raza = 1;
+                Pez.cantidad = cantidad + 1;
                 break;
         }
 
@@ -129,13 +133,13 @@ public class Pez extends SerVivo
     {
         switch (raza) {
             case 1:
-                return String.valueOf(cantidad);
+                return String.valueOf(this.cantidad);
             case 2:
-                return String.valueOf(cantidad2);
+                return String.valueOf(this.cantidad2);
             case 3:
-                return String.valueOf(cantidad3);
+                return String.valueOf(this.cantidad3);
             default:
-                return String.valueOf(cantidad + cantidad2 + cantidad3);
+                return String.valueOf(this.cantidad + this.cantidad2 + this.cantidad3);
         }
     }
 
