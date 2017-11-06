@@ -79,9 +79,9 @@ public class Pez extends SerVivo
     @Override
     public void iniDieta(ArrayList<ArrayList<Integer>> dieta)
     {
-        Pez.dieta=dieta;
+        Pez.dieta = dieta;
     }
-    
+
     /*
     *   Setter de prob de dieta, para la raza de ID id
      */
@@ -125,9 +125,18 @@ public class Pez extends SerVivo
     *   Devuelve la cantidad de elementos de esta clase
      */
     @Override
-    public String cantidad() //Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
+    public String cantidad(int raza) //Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
     {
-        return (String.valueOf(cantidad + cantidad2 + cantidad3) + " esquimales que son: " + cantidad + " bacalaos, " + cantidad2 + " rayas y " + cantidad3 + " merluzas negras\n");
+        switch (raza) {
+            case 1:
+                return String.valueOf(cantidad);
+            case 2:
+                return String.valueOf(cantidad2);
+            case 3:
+                return String.valueOf(cantidad3);
+            default:
+                return String.valueOf(cantidad + cantidad2 + cantidad3);
+        }
     }
 
     /*
@@ -171,7 +180,7 @@ public class Pez extends SerVivo
 
     /*
     * Funcion para destruir el objeto
-    */
+     */
     @Override
     public void destruir()
     {
@@ -180,39 +189,38 @@ public class Pez extends SerVivo
                 Pez.cantidad = cantidad - 1;
                 break;
             case 2:
-                Pez.cantidad2 = cantidad2 -1;
+                Pez.cantidad2 = cantidad2 - 1;
                 break;
             case 3:
                 Pez.cantidad3 = cantidad3 - 1;
                 break;
         }
     }
-    
+
     /*
     *   Funcion para recuperar el String del Pez
-    */
+     */
     @Override
     public String toString()
     {
-        String respuesta="";
-        switch(raza)
-        {
+        String respuesta = "";
+        switch (raza) {
             case 1:
-                respuesta="[Bacalao";
+                respuesta = "[Bacalao";
                 break;
             case 2:
-                respuesta="[Raya";
+                respuesta = "[Raya";
                 break;
             case 3:
-                respuesta="[Merluza Negra";
-            break;
+                respuesta = "[Merluza Negra";
+                break;
         }
-        return (respuesta+" IMC: "+IMC+" nacido el dia: "+diaNacimiento+"]\n");
+        return (respuesta + " IMC: " + IMC + " nacido el dia: " + diaNacimiento + "]\n");
     }
-    
+
     /*
     *   Funcion para consultar la raza de este pez
-    */
+     */
     @Override
     public int getRaza()
     {
@@ -227,7 +235,7 @@ public class Pez extends SerVivo
     {
         ArrayList<Integer> ret = new ArrayList();
         for (int i = 0; i < 6; i++) {
-                    ret.add(Utilidades.rand(Pez.dieta.get(i).get(0), Pez.dieta.get(i).get(1)));
+            ret.add(Utilidades.rand(Pez.dieta.get(i).get(0), Pez.dieta.get(i).get(1)));
         }
         return ret;
     }

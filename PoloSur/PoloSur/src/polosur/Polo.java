@@ -235,10 +235,13 @@ public class Polo
     /*
     * Funcion para obtener toda la información del polo
     */
-    public String Info()
+    public ArrayList<String> Info()
     {
+        ArrayList<String> cadenas = new ArrayList();
         String mensaje="";
-        mensaje+= "Fecha: Dia "+dia;
+        for(int i=0;i<13;i++)
+            cadenas.add(mensaje);
+        cadenas.set(0, "Dia "+dia);
         Utilidades.RadixSortRaza(animales.get(1));
         for(int i=1;i<animales.size();i++)
             for(int j=0;j<animales.get(i).size();i++)
@@ -247,21 +250,36 @@ public class Polo
                 mensaje += animales.get(i).get(j).toString();
                 
             }
+        cadenas.set(1, mensaje);
         Utilidades.RadixSortIMC(animales.get(1));
+        
         for(int i=1;i<animales.size();i++)
         {
                 try{
-                mensaje += animales.get(i).get(0).toString();
-                }catch(Exception e){}
+                    cadenas.set(7-i,animales.get(i).get(0).cantidad(0));
+                }catch(Exception e){
+                    cadenas.set(7-i,"0");
+                }
         }
-        mensaje+=krill+".000000 unidades de Krill\n";
-        mensaje+="Temperatura del agua: "+temperatura+ "ºC\n";
+        for(int i=1;i<4;i++)
+        {
+            try{
+                    cadenas.set(6+i,animales.get(i).get(0).cantidad(i));
+                }catch(Exception e){
+                    cadenas.set(6+i,"0");
+                }
+        }
+        
+        cadenas.set(11,krill+".000000 unidades");
+        cadenas.set(10,temperatura+ "ºC");
+        mensaje="";
         for(int i=1;i<flagsDesastres.size();i++)
         {
             if(flagsDesastres.get(i))
                 mensaje+=EscribirDesastre(i);
         }
-        return mensaje;
+        cadenas.set(12, mensaje);
+        return cadenas;
     }
     
     /******************    DESASTRES   ******************/

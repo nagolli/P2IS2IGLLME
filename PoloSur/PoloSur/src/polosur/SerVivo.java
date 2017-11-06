@@ -164,7 +164,7 @@ public class SerVivo
     * Funcion para obtener la cantidad de seres vivos de la raza de la especie de este SerVivo
     * Ejemplo: Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
      */
-    public String cantidad()
+    public String cantidad(int raza)
     {
         return "";
     }

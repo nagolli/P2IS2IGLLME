@@ -100,9 +100,9 @@ public class Foca extends SerVivo
     *   Devuelve la cantidad de elementos de esta clase
     */
     @Override
-    public String cantidad() //Devuelve "3 esquimales" ó "10 peces que son: 3 atunes, 2 merluzas y 5 rapes"
+    public String cantidad(int raza)
     {
-        return (String.valueOf(cantidad)+" focas\n");
+        return (String.valueOf(cantidad));
     }
     
     /*

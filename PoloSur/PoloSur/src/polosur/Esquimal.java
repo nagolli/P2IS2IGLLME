@@ -100,9 +100,9 @@ public class Esquimal extends SerVivo
     *   Devuelve la cantidad de elementos de esta clase
      */
     @Override
-    public String cantidad()
+    public String cantidad(int raza)
     {
-        return (String.valueOf(cantidad) + " esquimales\n");
+        return (String.valueOf(cantidad));
     }
 
     /*
