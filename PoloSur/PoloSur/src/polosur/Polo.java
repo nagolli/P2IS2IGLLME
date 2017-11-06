@@ -246,7 +246,7 @@ public class Polo
         for(int i=1;i<animales.size();i++)
             for(int j=0;j<animales.get(i).size();i++)
             {
-                
+                System.out.println(i+" "+j);
                 mensaje += animales.get(i).get(j).toString();
                 
             }
