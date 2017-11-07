@@ -371,10 +371,11 @@ public class Polo implements Serializable
     
     private void morsasCanibales()    //FLAG 4
     {
-        flagsDesastres.set(2, false);
         try{
         animales.get(4).get(0).setDieta(4, 0, 1);
         }
-        catch(Exception e){}
+        catch(Exception e){
+        flagsDesastres.set(2, false);
+        }
     }
 }
