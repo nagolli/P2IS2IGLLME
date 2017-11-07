@@ -276,7 +276,7 @@ public class Polo implements Serializable
         cadenas.set(11, krill + ".000000");
         cadenas.set(10, temperatura + "ºC");
         mensaje = "";
-        for (int i = 1; i < flagsDesastres.size(); i++) {
+        for (int i = 0; i < flagsDesastres.size(); i++) {
             if (flagsDesastres.get(i)) {
                 mensaje += EscribirDesastre(i);
             }
@@ -295,13 +295,14 @@ public class Polo implements Serializable
 
     private String EscribirDesastre(int i)
     {
+        System.out.println(this.flagsDesastres);
         switch (i) {
+            case 0:
+                return "Desastre: Calentamiento global\n";
             case 1:
-                return "Desastre: Calentamiento global";
-            case 2:
-                return "Desastre: Buques de pesca mayor";
+                return "Desastre: Buques de pesca mayor\n";
             default:
-                return "Desastre no identificado: " + i;
+                return "Desastre no identificado: " + i + "\n";
         }
     }
 
