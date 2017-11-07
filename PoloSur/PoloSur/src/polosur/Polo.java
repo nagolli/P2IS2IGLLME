@@ -27,7 +27,7 @@ public class Polo implements Serializable
     Polo(ArrayList<Integer> valoresConfig)
     {
         flagsDesastres = new ArrayList();
-        for (int d = 0; d < 2; d++) //< Modificar al añadir desastres
+        for (int d = 0; d < numCatastrofes; d++) //< Modificar al añadir desastres
         {
             flagsDesastres.add(false);
         }
@@ -286,6 +286,8 @@ public class Polo implements Serializable
     /**
      * **************** DESASTRES *****************
      */
+    int numCatastrofes=4; 
+    
     public void ActivarDesastre(int i)
     {
         flagsDesastres.set(i - 1, true);
@@ -316,7 +318,7 @@ public class Polo implements Serializable
         if (flagsDesastres.get(1)) {
             buquesDePescaMayor();
         }
-        if (flagsDesastres.get(3)) {
+        if (flagsDesastres.get(2)) {
             cthulhu();
         }
         if (flagsDesastres.get(3)) {
