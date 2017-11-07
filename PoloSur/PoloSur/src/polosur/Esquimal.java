@@ -5,13 +5,14 @@
  */
 package polosur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ignacio
  */
-public class Esquimal extends SerVivo
+public class Esquimal extends SerVivo  implements Serializable
 {
 
     private static int MinIMC;                          //constante de clase

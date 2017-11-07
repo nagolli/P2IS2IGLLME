@@ -5,13 +5,14 @@
  */
 package polosur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ignacio
  */
-public class Polo
+public class Polo implements Serializable
 {
 
     private ArrayList<ArrayList<SerVivo>> animales;
@@ -19,15 +20,14 @@ public class Polo
     private float temperatura;
     private int dia;
     private ArrayList<Boolean> flagsDesastres;
-    private VentanaPrincipal vista;
+    //private VentanaPrincipal vista;
     private ArrayList<Boolean> extintos;
 
     /*
     * Constructor de Polo
      */
-    Polo(ArrayList<Integer> valoresConfig, VentanaPrincipal vista)
+    Polo(ArrayList<Integer> valoresConfig)
     {
-        this.vista = vista;
         flagsDesastres = new ArrayList();
         for (int d = 0; d < 2; d++) //< Modificar al añadir desastres
         {
@@ -103,7 +103,7 @@ public class Polo
             }
         }
         if (krill == 0) {
-            Utilidades.MostrarExtincion(0, vista, dia);
+            Utilidades.MostrarExtincion(0, dia);
         }
         modificarKrill();
         modificarTemperatura();
@@ -111,7 +111,7 @@ public class Polo
         for (i = 1; i < animales.size(); i++) {
             if (animales.get(i).size() == 0 && !extintos.get(i)) {
                 extintos.set(i, true);
-                Utilidades.MostrarExtincion(i, vista, dia);
+                Utilidades.MostrarExtincion(i, dia);
             }
         }
         dia++;

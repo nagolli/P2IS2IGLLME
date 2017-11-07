@@ -5,13 +5,14 @@
  */
 package polosur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ignacio
  */
-public class Foca extends SerVivo
+public class Foca extends SerVivo implements Serializable
 {
     private static int MinIMC; 	//constante de clase
     private static int MaxIMC; 	//constante de clase

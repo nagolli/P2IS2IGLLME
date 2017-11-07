@@ -5,13 +5,14 @@
  */
 package polosur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ignacio
  */
-public class Pez extends SerVivo
+public class Pez extends SerVivo  implements Serializable
 {
 
     private static int MinIMC; 	//constante de clase

@@ -9,12 +9,14 @@ package polosur;
  *
  * @author Lidia
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame
+{
 
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public VentanaPrincipal()
+    {
         initComponents();
     }
 
@@ -255,10 +257,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        modelo = new Polo(MainYConfig.Config(),this);
+        modelo = new Polo(MainYConfig.Config());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Utilidades.Serializar(modelo);
         System.exit(0);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -271,7 +274,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -296,8 +300,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new VentanaPrincipal().setVisible(true);
             }
         });
@@ -319,9 +325,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
     static Polo modelo;
-    
+
     void addModelo(Polo modelo)
     {
-        this.modelo=modelo;
+        Polo ultimo = Utilidades.getSerializado();
+        if (ultimo == null) {
+            this.modelo = modelo;
+        } else {
+            System.out.println("Cargado ultimo");
+            this.modelo = ultimo;
+        }
     }
 }

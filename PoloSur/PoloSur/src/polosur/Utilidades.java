@@ -6,8 +6,16 @@
 package polosur;
 
 import java.awt.Component;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +32,7 @@ public class Utilidades
     *   No desordena la ordenación anterior
     *
     *   Usa Digito y Concatenar
-    */
+     */
     static public ArrayList<SerVivo> RadixSortIMC(ArrayList<SerVivo> sort)
     {
         int n = sort.size();
@@ -51,13 +59,13 @@ public class Utilidades
         }
         return sort;
     }
-    
+
     /*
     *   Funcion RadixSortRaza para ordenar un array de SeresVivos segun su raza
     *   No desordena la ordenación anterior
     *
     *   Usa Digito y Concatenar
-    */
+     */
     static public ArrayList<SerVivo> RadixSortRaza(ArrayList<SerVivo> sort)
     {
         int n = sort.size();
@@ -87,22 +95,19 @@ public class Utilidades
 
     /*
     * Funcion digito en base 10, para numeros entre 0 y 99
-    */
+     */
     private static int Digito(int i, Integer num)
     {
-        if(i==0)
-        {
-           return  num%10;
-        }
-        else
-        {
-            return num/10;
+        if (i == 0) {
+            return num % 10;
+        } else {
+            return num / 10;
         }
     }
 
     /*
     * Funcion para concatenar Vectores
-    */
+     */
     private static void ConcatenarVector(ArrayList<SerVivo> v1, ArrayList<SerVivo> v2)
     {
         v1.ensureCapacity(v1.size() + v2.size());
@@ -110,10 +115,10 @@ public class Utilidades
             v1.add(v2.get(i));
         }
     }
-    
+
     /*
     *   Funcion para obtener Cierto o Falso con probabilidad dada sobre mil
-    */
+     */
     static public boolean rand(int prob)
     {
         return (aleatorio.nextInt(999) < prob);
@@ -121,46 +126,86 @@ public class Utilidades
 
     /*
     *   Funcion para obtener un numero entre x e y incluidos
-    */
+     */
     static public int rand(int x, int y)
     {
-        if(y>x)
+        if (y > x) {
             return (aleatorio.nextInt(y + 1 - x) + x);
-        if(x<y)
+        }
+        if (x < y) {
             return (aleatorio.nextInt(x + 1 - y) + y);
+        }
         return x;
     }
 
-    
     /*
     Funcion para mostrar un Dialog Pane indicando la extinción de una especie    
-    */
-    static void MostrarExtincion(int i,Component frame, int d)
+     */
+    static void MostrarExtincion(int i, int d)
     {
-        String mensaje="";
-        switch(i)
-        {
+        String mensaje = "";
+        switch (i) {
             case 0:
-                mensaje="El krill ha llegado al limite el dia "+d+".";
+                mensaje = "El krill ha llegado al limite el dia " + d + ".";
                 break;
             case 1:
-                mensaje="Los peces se han extinguido el dia "+d+", es el fin del polo.";
+                mensaje = "Los peces se han extinguido el dia " + d + ", es el fin del polo.";
                 break;
             case 2:
-                mensaje="Las focas se han extinguido el dia "+d+".";
+                mensaje = "Las focas se han extinguido el dia " + d + ".";
                 break;
             case 3:
-                mensaje="Los osos polares se han extinguido el dia "+d+".";
+                mensaje = "Los osos polares se han extinguido el dia " + d + ".";
                 break;
             case 4:
-                mensaje="Las morsas se han extinguido el dia "+d+".";
+                mensaje = "Las morsas se han extinguido el dia " + d + ".";
                 break;
             case 5:
-                mensaje="Los esquimales han muerto el dia "+d+".";
+                mensaje = "Los esquimales han muerto el dia " + d + ".";
                 break;
         }
         //default title and icon
-        JOptionPane.showMessageDialog(frame,mensaje);
+        JOptionPane.showMessageDialog(new JFrame(), mensaje);
+    }
+
+    static void Serializar(Object serializado)
+    {
+        try {
+            ByteArrayOutputStream bs = new ByteArrayOutputStream();
+            ObjectOutputStream os = new ObjectOutputStream(bs);
+            os.writeObject(serializado);  // this es de tipo DatoUdp
+            os.close();
+            byte[] bytes = bs.toByteArray(); // devuelve byte[]
+            FileOutputStream fos = new FileOutputStream("UltimaSesion.bin");
+            fos.write(bytes);
+            fos.close();
+        } catch (Exception e) {
+            System.out.println("Error al serializar: " + e);
+        }
+    }
+
+    static Polo getSerializado()
+    {
+
+        int reply = JOptionPane.showConfirmDialog(null, "Desea cargar el estado de la última sesión?", "Cargar datos", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.NO_OPTION) {
+            return null;
+        } else {
+            try {
+                FileInputStream fis = new FileInputStream("UltimaSesion.bin");
+                byte[] bytes = new byte[12000];
+                fis.read(bytes);
+                ByteArrayInputStream bs = new ByteArrayInputStream(bytes); // bytes es el byte[]
+                ObjectInputStream is = new ObjectInputStream(bs);
+                Polo objeto = (Polo) is.readObject();
+                is.close();
+                return objeto;
+            } catch (Exception e) {
+                System.out.println("Error leer serializacion: " + e);
+                return null;
+            }
+
+        }
     }
 
 }

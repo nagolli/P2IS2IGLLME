@@ -5,13 +5,14 @@
  */
 package polosur;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ignacio
  */
-public class SerVivo
+public class SerVivo implements Serializable
 {
 
     protected int ID;

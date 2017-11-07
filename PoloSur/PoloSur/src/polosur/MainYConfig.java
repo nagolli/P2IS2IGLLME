@@ -95,7 +95,7 @@ public class MainYConfig
         ArrayList<Integer> valores;
         valores=Config();
         VentanaPrincipal vista=new VentanaPrincipal();
-        Polo modelo=new Polo(valores, vista);
+        Polo modelo=new Polo(valores);
         vista.addModelo(modelo);
         /*
         modelo.DiezDias();
