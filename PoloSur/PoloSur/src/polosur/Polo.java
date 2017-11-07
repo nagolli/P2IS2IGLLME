@@ -14,17 +14,15 @@ import java.util.ArrayList;
  */
 public class Polo implements Serializable
 {
-
     private ArrayList<ArrayList<SerVivo>> animales;
     private int krill; //Se mide en millones
     private float temperatura;
     private int dia;
     private ArrayList<Boolean> flagsDesastres;
-    //private VentanaPrincipal vista;
     private ArrayList<Boolean> extintos;
 
     /*
-    * Constructor de Polo
+     * Constructor de Polo
      */
     Polo(ArrayList<Integer> valoresConfig)
     {
@@ -163,18 +161,18 @@ public class Polo implements Serializable
         switch (i) {
             case 1:
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                /*Descomentar para que cada pez ponga 5 crias, mejora muchisimo la supervivencia de los mismos
+                //Descomentar para que cada pez ponga 5 crias, mejora muchisimo la supervivencia de los mismos
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
-                 */
+                 //
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                /*Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
+                //Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
-                 */
+                 //
                 break;
             case 3:
                 animales.get(3).add(j, new Oso(animales.get(3).get(j).getIMC(), dia));
@@ -286,7 +284,7 @@ public class Polo implements Serializable
     }
 
     /**
-     * **************** DESASTRES   *****************
+     * **************** DESASTRES *****************
      */
     public void ActivarDesastre(int i)
     {
@@ -296,11 +294,15 @@ public class Polo implements Serializable
     private String EscribirDesastre(int i)
     {
         System.out.println(this.flagsDesastres);
-        switch (i) {
-            case 0:
-                return "Desastre: Calentamiento global\n";
+        switch (i+1) {
             case 1:
+                return "Desastre: Calentamiento global\n";
+            case 2:
                 return "Desastre: Buques de pesca mayor\n";
+            case 3:
+                return "Alabadlo! Cthulu ha despertado!\n";
+            case 4:
+                return "Desastre: Morsas Canivales\n";
             default:
                 return "Desastre no identificado: " + i + "\n";
         }
@@ -313,6 +315,12 @@ public class Polo implements Serializable
         }
         if (flagsDesastres.get(1)) {
             buquesDePescaMayor();
+        }
+        if (flagsDesastres.get(3)) {
+            cthulhu();
+        }
+        if (flagsDesastres.get(3)) {
+            morsasCanibales();
         }
     }
 
@@ -340,5 +348,27 @@ public class Polo implements Serializable
             }
         }
     }
-
+    
+    private void cthulhu()    //FLAG 3
+    {
+        flagsDesastres.set(2, false);
+        for (int i = 0; i < animales.get(5).size(); i++) {
+            if (Utilidades.rand(990)) {
+                animales.get(3).get(i).destruir();
+                animales.get(3).remove(i);
+                i--;
+            }
+            else
+                return;
+        }
+    }
+    
+    private void morsasCanibales()    //FLAG 4
+    {
+        flagsDesastres.set(2, false);
+        try{
+        animales.get(4).get(0).setDieta(4, 0, 1);
+        }
+        catch(Exception e){}
+    }
 }
