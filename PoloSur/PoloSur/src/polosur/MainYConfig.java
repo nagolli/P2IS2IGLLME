@@ -49,7 +49,7 @@ public class MainYConfig
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min krill, max krill (en millones)
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min peces, max peces
             dietaMorsa.add(new ArrayList(){{add(1);add(2);}});//min focas, max focas
-            dietaMorsa.add(new ArrayList(){{add(0);add(2/1);}});//min osos, max osos
+            dietaMorsa.add(new ArrayList(){{add(0);add(2);}});//min osos, max osos
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min morsas, max morsas
             dietaMorsa.add(new ArrayList(){{add(0);add(0);}});//min esquimales, max esquimales
             //Alimentacion diaria de osos
