@@ -166,11 +166,15 @@ public class Polo implements Serializable
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                 animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
+                animales.get(1).add(j, new Pez(animales.get(1).get(j).getIMC(), dia, animales.get(1).get(j).getRaza()));
                  //
                 break;
             case 2:
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
                 //Descomentar para que cada foca ponga 2 crias, mejora la supervivencia de las mismas
+                animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
+                animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
                 animales.get(2).add(j, new Foca(animales.get(2).get(j).getIMC(), dia));
                  //
                 break;
@@ -356,8 +360,8 @@ public class Polo implements Serializable
         flagsDesastres.set(2, false);
         for (int i = 0; i < animales.get(5).size(); i++) {
             if (Utilidades.rand(990)) {
-                animales.get(3).get(i).destruir();
-                animales.get(3).remove(i);
+                animales.get(5).get(i).destruir();
+                animales.get(5).remove(i);
                 i--;
             }
             else

@@ -146,8 +146,8 @@ public class Utilidades
         String mensaje = "";
         switch (i) {
             case 0:
-                mensaje = "El krill ha llegado al limite el dia " + d + ".";
-                break;
+                //mensaje = "El krill ha llegado al limite el dia " + d + ".";
+                return;
             case 1:
                 mensaje = "Los peces se han extinguido el dia " + d + ", es el fin del polo.";
                 break;
