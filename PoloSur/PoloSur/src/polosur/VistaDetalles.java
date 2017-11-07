@@ -16,8 +16,8 @@ public class VistaDetalles extends javax.swing.JFrame {
     /**
      * Creates new form VistaDetalles
      */
-    public VistaDetalles(VentanaPrincipal padre, ArrayList<String> elementos) {
-        this.padre=padre;
+    public VistaDetalles(ArrayList<String> elementos) {
+        //this.padre=padre;
         initComponents();
         fecha.setText(elementos.get(0));
         animales.setText(elementos.get(1));
@@ -75,7 +75,7 @@ public class VistaDetalles extends javax.swing.JFrame {
         catastrofes = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setText("Fecha:");
@@ -316,7 +316,7 @@ public class VistaDetalles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        padre.setVisible(true);
+        //padre.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -354,5 +354,5 @@ public class VistaDetalles extends javax.swing.JFrame {
     private javax.swing.JTextField raya;
     private javax.swing.JTextField temperatura;
     // End of variables declaration//GEN-END:variables
-    private static VentanaPrincipal padre;
+    //private static VentanaPrincipal padre;
 }

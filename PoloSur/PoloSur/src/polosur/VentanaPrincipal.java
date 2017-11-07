@@ -266,8 +266,8 @@ public class VentanaPrincipal extends javax.swing.JFrame
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        VistaDetalles vista = new VistaDetalles(this, modelo.Info());
+        //this.setVisible(false);
+        VistaDetalles vista = new VistaDetalles(modelo.Info());
         vista.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
