@@ -308,7 +308,7 @@ public class Polo implements Serializable
             case 3:
                 return "Alabadlo! Cthulu ha despertado!\n";
             case 4:
-                return "Desastre: Morsas Canivales\n";
+                return "Desastre: Morsas Caníbales\n";
             default:
                 return "Desastre no identificado: " + i + "\n";
         }
@@ -372,7 +372,7 @@ public class Polo implements Serializable
     private void morsasCanibales()    //FLAG 4
     {
         try{
-        animales.get(4).get(0).setDieta(4, 0, 1);
+        animales.get(4).get(0).setDieta(4, -1, 1);
         }
         catch(Exception e){
         flagsDesastres.set(2, false);

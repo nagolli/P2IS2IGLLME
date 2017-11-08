@@ -74,7 +74,7 @@ public class Utilidades
         for (int i = 0; i < 10; i++) {
             aux.add(new ArrayList());
         }
-        int iterations = 2;
+        int iterations = 1;
 
         for (int i = 0; i <= iterations; ++i) {
             for (int j = 0; j < 10; ++j) {
