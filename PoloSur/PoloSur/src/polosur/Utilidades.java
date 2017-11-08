@@ -193,7 +193,7 @@ public class Utilidades
         } else {
             try {
                 FileInputStream fis = new FileInputStream("UltimaSesion.bin");
-                byte[] bytes = new byte[12000];
+                byte[] bytes = new byte[1200000];
                 fis.read(bytes);
                 ByteArrayInputStream bs = new ByteArrayInputStream(bytes); // bytes es el byte[]
                 ObjectInputStream is = new ObjectInputStream(bs);
