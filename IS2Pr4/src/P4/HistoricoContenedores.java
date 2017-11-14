@@ -21,17 +21,23 @@ public class HistoricoContenedores {
 	}
 	
 	/**
-	 * Metodo para añadir un Contenedor2 al vector
+	 * Metodo para aï¿½adir un Contenedor2 al vector
 	 * @param c4, objeto tipo Contenedor2
 	 */
 	public void sumarContenedor(Contenedor2 c4)
 	{
+                try{
 		vecContenedores.add(c4);
 		contador++;
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Limite alcanzado");
+                }
 	}
 	
 	/**
-	 * Metodo para eliminar el último Contenedor2 añadido al vector
+	 * Metodo para eliminar el ï¿½ltimo Contenedor2 aï¿½adido al vector
 	 */
 	public void eliminarContenedor()
 	{
@@ -40,7 +46,7 @@ public class HistoricoContenedores {
 	}
 
 	/**
-	 * Metodo para añadir un paquete al ultimo contenedor introducido
+	 * Metodo para aï¿½adir un paquete al ultimo contenedor introducido
 	 * @param p2, un objeto de tipo Paquete
 	 */
 	public void sumarPaquete(Paquete p2)
@@ -57,8 +63,8 @@ public class HistoricoContenedores {
 	}
 	
 	/**
-	 * Método que devuelve el último contenedor introducido
-	 * @return el último contenedor introducido
+	 * Mï¿½todo que devuelve el ï¿½ltimo contenedor introducido
+	 * @return el ï¿½ltimo contenedor introducido
 	 */
 	public Contenedor2 ultimoContenedor()
 	{
@@ -86,8 +92,8 @@ public class HistoricoContenedores {
 	}
 	
 	/**
-	 * Metodo para calcular el contenedor mas pequeño
-	 * @return el contenedor mas pequeño
+	 * Metodo para calcular el contenedor mas pequeï¿½o
+	 * @return el contenedor mas pequeï¿½o
 	 */
 	public Contenedor2 contenedorMasPequeno()
 	{
