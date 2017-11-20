@@ -1,0 +1,14 @@
+Se adjuntan imagenes obtenidas con el plugin JaCoCo, que requiere la inclusión de un main en el código 
+para poder realizar las pruebas.
+
+En primer lugar en Proyecto se pueden ver las coberturas de cada una de las clases, junto con una serie 
+de estadisticas: Porcentaje cubierto, instrucciones no cubiertas, ramas sin cubrir y un desglose.
+
+A continuación, si accedemos a un clase, en este caso hemos escogido Contenedor 2, podremos observar 
+que solo cubrimos los métodos estudiados en la práctica.
+
+Si selecccionamos ver código, podrémos ver cuales lineas de código han sido probadas, marcandose en 
+verde aquellas que el test de cobertura cubra, y en rojo las que no.
+
+Incluimos un ejemplo donde se genera una rama, que se representa con un diamante, este método podría 
+tener una cobertura parcial si el test no se hace correctamente.

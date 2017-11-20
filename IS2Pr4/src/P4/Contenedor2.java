@@ -1,7 +1,7 @@
 package P4;
 /**
  * Clase Contenedor2 (similar a Contenedor) con la diferencia que
- * permite almacenar paquetes de distinto tamaño en cada contenedor
+ * permite almacenar paquetes de distinto tamano en cada contenedor
  * 
  */
 import java.util.Vector;
@@ -65,7 +65,7 @@ public class Contenedor2 {
 	}
 	
 	/**
-	 * Metodo para añadir un paquete al vector
+	 * Metodo para anadir un paquete al vector
 	 * @param p2, un objeto de tipo Paquete
 	 * @param contador, un entero para llevar la cuenta del numero de paquetes introducidos
 	 */
@@ -75,7 +75,7 @@ public class Contenedor2 {
 	}
 	
 	/**
-	 * @return el tamaño del vector de paquetes
+	 * @return el tamano del vector de paquetes
 	 */
 	public int contarPaquetes(){
 		return contador;

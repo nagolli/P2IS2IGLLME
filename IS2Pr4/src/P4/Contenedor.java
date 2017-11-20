@@ -111,7 +111,7 @@ public class Contenedor {
 	}
 	
 	/**
-	 * Metodo para calcular el espacio sobrante en el contenedor, introduciento el número máximo de paquetes del tamaño del paquete introducir como parámetro
+	 * Metodo para calcular el espacio sobrante en el contenedor, introduciento el numero maximo de paquetes del tamano del paquete introducir como parametro
 	 * @param p2, es un objeto de tipo Paquete
 	 * @param sobranteAncho, metros que sobran de ancho en el contenedor
 	 * @param sobranteAlto, metros que sobran de alto en el contenedor
