@@ -567,3 +567,105 @@ nov 28, 2017 5:55:41 PM org.apache.catalina.startup.HostConfig deployDescriptor
 INFORMACIÓN: Deployment of configuration descriptor C:\Users\Ignacio\Documents\GitHub\P2IS2IGLLME\Practica Servlets\apache-tomcat-7.0.82\conf\Catalina\localhost\PracServlets.xml has finished in 109 ms
 nov 28, 2017 5:55:41 PM org.apache.catalina.util.LifecycleBase start
 INFORMACIÓN: The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/PracServlets]] after start() had already been called. The second call will be ignored.
+nov 28, 2017 6:19:10 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFORMACIÓN: Desplieque del descriptor de configuración C:\Users\Ignacio\Documents\GitHub\P2IS2IGLLME\Practica Servlets\apache-tomcat-7.0.82\conf\Catalina\localhost\Servlet1.xml
+nov 28, 2017 6:19:10 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFORMACIÓN: Deployment of configuration descriptor C:\Users\Ignacio\Documents\GitHub\P2IS2IGLLME\Practica Servlets\apache-tomcat-7.0.82\conf\Catalina\localhost\Servlet1.xml has finished in 125 ms
+nov 28, 2017 6:19:10 PM org.apache.catalina.util.LifecycleBase start
+INFORMACIÓN: The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Servlet1]] after start() had already been called. The second call will be ignored.
+nov 28, 2017 6:35:09 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:35:10 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:35:13 PM org.apache.catalina.startup.HostConfig reload
+INFORMACIÓN: Falló la recarga del contexto [/Servlet1]
+nov 28, 2017 6:35:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:35:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:36:07 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:36:07 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:36:08 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:36:09 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:36:13 PM org.apache.catalina.startup.HostConfig reload
+INFORMACIÓN: Falló la recarga del contexto [/Servlet1]
+nov 28, 2017 6:36:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:36:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:39:40 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:39:41 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:47:11 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:47:12 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:53:57 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:53:57 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:54:34 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:54:34 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:54:34 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:54:35 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:59:51 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:59:51 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 6:59:54 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 6:59:54 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:00:31 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:00:31 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:00:33 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:00:33 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:01:27 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:01:28 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:01:34 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:01:34 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:04:50 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:04:50 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:04:52 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:04:52 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:07:05 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:07:05 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:07:07 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:07:07 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:08:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:08:13 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:08:35 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:08:35 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
+nov 28, 2017 7:08:48 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Ha comenzado la recarga de Contexto [/Servlet1]
+nov 28, 2017 7:08:48 PM org.apache.catalina.core.StandardContext reload
+INFORMACIÓN: Se ha completado la recarga de este Contexto
