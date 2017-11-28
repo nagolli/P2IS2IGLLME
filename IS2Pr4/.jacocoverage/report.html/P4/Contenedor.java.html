@@ -33,7 +33,7 @@ public class Contenedor {
 	 * @return la anchura del contenedor
 	 */
 	public int getAncho() {
-<span class="nc" id="L36">		return ancho;</span>
+<span class="fc" id="L36">		return ancho;</span>
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class Contenedor {
 	 * @return la altura del contenedor
 	 */
 	public int getAlto() {
-<span class="nc" id="L50">		return alto;</span>
+<span class="fc" id="L50">		return alto;</span>
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class Contenedor {
 	 * @return perimetro del contenedor
 	 */
 	public int calcularPerimetro(){
-<span class="nc" id="L73">		return((this.ancho+this.alto)*2);</span>
+<span class="fc" id="L73">		return((this.ancho+this.alto)*2);</span>
 	}
 	
 	/**
@@ -104,10 +104,10 @@ public class Contenedor {
 	 */
 	public int calculaNumPaquete(Paquete p2){
 		
-<span class="nc" id="L107">		paquetesAncho = this.ancho/p2.getAncho();</span>
-<span class="nc" id="L108">		paquetesAlto = this.alto/p2.getAlto();</span>
+<span class="fc" id="L107">		paquetesAncho = this.ancho/p2.getAncho();</span>
+<span class="fc" id="L108">		paquetesAlto = this.alto/p2.getAlto();</span>
 		
-<span class="nc" id="L110">		return(paquetesAncho*paquetesAlto);</span>
+<span class="fc" id="L110">		return(paquetesAncho*paquetesAlto);</span>
 	}
 	
 	/**
@@ -119,10 +119,10 @@ public class Contenedor {
 	 */
 	public int sobrantePaquete(Paquete p2){
 		
-<span class="nc" id="L122">		sobranteAncho = this.ancho - (this.paquetesAncho*p2.getAncho());</span>
-<span class="nc" id="L123">		sobranteAlto = this.alto - (this.paquetesAlto*p2.getAlto());</span>
+<span class="fc" id="L122">		sobranteAncho = this.ancho - (this.paquetesAncho*p2.getAncho());</span>
+<span class="fc" id="L123">		sobranteAlto = this.alto - (this.paquetesAlto*p2.getAlto());</span>
 		
-<span class="nc" id="L125">		return((paquetesAncho*p2.getAncho()*sobranteAlto)+(paquetesAlto*p2.getAlto()*sobranteAncho)+(sobranteAncho*sobranteAlto));</span>
+<span class="fc" id="L125">		return((paquetesAncho*p2.getAncho()*sobranteAlto)+(paquetesAlto*p2.getAlto()*sobranteAncho)+(sobranteAncho*sobranteAlto));</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

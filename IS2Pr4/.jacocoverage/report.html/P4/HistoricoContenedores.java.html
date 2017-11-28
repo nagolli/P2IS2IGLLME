@@ -27,14 +27,14 @@ public class HistoricoContenedores {
 	public void sumarContenedor(Contenedor2 c4)
 	{
                 try{
-<span class="nc" id="L30">		vecContenedores.add(c4);</span>
-<span class="nc" id="L31">		contador++;</span>
+<span class="fc" id="L30">		vecContenedores.add(c4);</span>
+<span class="fc" id="L31">		contador++;</span>
                 }
 <span class="nc" id="L33">                catch(Exception e)</span>
                 {
 <span class="nc" id="L35">                    System.out.println(&quot;Limite alcanzado&quot;);</span>
-<span class="nc" id="L36">                }</span>
-<span class="nc" id="L37">	}</span>
+<span class="fc" id="L36">                }</span>
+<span class="fc" id="L37">	}</span>
 	
 	/**
 	 * Metodo para eliminar el �ltimo Contenedor2 a�adido al vector
@@ -77,18 +77,18 @@ public class HistoricoContenedores {
 	 */
 	public Contenedor2 contenedorMasGrande()
 	{
-<span class="nc" id="L80">		int areaMax = 0;</span>
-<span class="nc" id="L81">		int posicion = 0;</span>
-<span class="nc bnc" id="L82" title="All 2 branches missed.">		for(int i=0; i&lt;vecContenedores.size(); i++)</span>
+<span class="fc" id="L80">		int areaMax = 0;</span>
+<span class="fc" id="L81">		int posicion = 0;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for(int i=0; i&lt;vecContenedores.size(); i++)</span>
 		{
-<span class="nc bnc" id="L84" title="All 2 branches missed.">			if(areaMax &lt; vecContenedores.elementAt(i).calcularArea())</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">			if(areaMax &lt; vecContenedores.elementAt(i).calcularArea())</span>
 			{
-<span class="nc" id="L86">				areaMax = vecContenedores.elementAt(i).calcularArea();</span>
-<span class="nc" id="L87">				posicion = i;</span>
+<span class="fc" id="L86">				areaMax = vecContenedores.elementAt(i).calcularArea();</span>
+<span class="fc" id="L87">				posicion = i;</span>
 			}
 		}
 		
-<span class="nc" id="L91">		return vecContenedores.elementAt(posicion);</span>
+<span class="fc" id="L91">		return vecContenedores.elementAt(posicion);</span>
 	}
 	
 	/**

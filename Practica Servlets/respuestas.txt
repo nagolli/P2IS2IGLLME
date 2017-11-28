@@ -1,0 +1,41 @@
+Pregunta 1:
+Integer AccesosInt = new Integer(0);
+//CODE
+javax.servlet.http.HttpSession sesion = request.getSession(true); ///<Carga datos de sesión
+        if (sesion.isNew()) { // la sesión es nueva
+            Encabezado = "Bienvenido";
+        } else {
+            Encabezado = "Has vuelto";
+            Integer AccesosViejo = (Integer) sesion.getAttribute("Accesos"); 	///<Obtiene variable accesos
+            if (AccesosViejo != null) {					///<Si existe la variable Accesos
+                AccesosInt = new Integer(AccesosViejo.intValue() + 1); 		///<Sumamos este acceso
+            }								///<Si no existe ya esta inicializada a 0
+        }
+        sesion.setAttribute("Accesos", AccesosInt);				///Asignamos la nueva variable accesos
+
+Pregunta 2:
+Ahora en los campos login y password salen los parametros introducidos en la URL.
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//Codigo
+//Inicializado en caso de que no se introduzcan, a pesar de que no se le llama en el código posterior
+login = request.getParameter("login");			
+        if (login == null) {
+            login = "";
+        }
+password = request.getParameter("password");
+        if (password == null) {
+            password = "";
+        }
+//Impresion de datos
+        out.println("<TR><TD>Login");
+String Login = request.getParameter("login");	//A la solicitud del servlet se le solicita el campo login
+        sesion.setAttribute("Login", Login);	//Asigna a la sesion, al parametro login, el login enviado en la URL
+        out.println("<TD>" + Login);
+        out.println("<TR><TD>Password");
+String Password = request.getParameter("password");
+        sesion.setAttribute("Password", Password);
+        out.println("<TD>" + Password);
+
+Pregunta 3
+La diferencia entre el metodo get y el post radica en si los elementos de la request se muestran en la URL (get) o no (Post), este ejemplo no es del todo seguro ya que esta mostrando la contraseña en la direccion

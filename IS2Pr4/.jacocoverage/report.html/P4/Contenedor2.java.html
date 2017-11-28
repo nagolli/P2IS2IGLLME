@@ -70,22 +70,22 @@ public class Contenedor2 {
 	 * @param contador, un entero para llevar la cuenta del numero de paquetes introducidos
 	 */
 	public void sumarPaquete(Paquete p2){
-<span class="nc" id="L73">		vecPaquetes.add(p2);</span>
-<span class="nc" id="L74">		contador++;</span>
-<span class="nc" id="L75">	}</span>
+<span class="fc" id="L73">		vecPaquetes.add(p2);</span>
+<span class="fc" id="L74">		contador++;</span>
+<span class="fc" id="L75">	}</span>
 	
 	/**
 	 * @return el tamano del vector de paquetes
 	 */
 	public int contarPaquetes(){
-<span class="nc" id="L81">		return contador;</span>
+<span class="fc" id="L81">		return contador;</span>
 	}
 	
 	/**
 	 * @return area del contenedor
 	 */
 	public int calcularArea(){
-<span class="nc" id="L88">		return(this.ancho*this.alto);</span>
+<span class="fc" id="L88">		return(this.ancho*this.alto);</span>
 	}
 	
 	/**
@@ -123,7 +123,7 @@ public class Contenedor2 {
 	 * @return el area del paquete calculada
 	 */
 	public int calculaAreaPaquete(Paquete p2){
-<span class="nc" id="L126">		return p2.getAlto()*p2.getAncho();</span>
+<span class="fc" id="L126">		return p2.getAlto()*p2.getAncho();</span>
 	}
 	
 	/**
@@ -131,11 +131,11 @@ public class Contenedor2 {
 	 * @return area total ocupada en el contenedor
 	 */
 	public int areaTotalPaquetes(){
-<span class="nc" id="L134">		this.totalAreaPaquetes = 0;</span>
-<span class="nc bnc" id="L135" title="All 2 branches missed.">		for(int i=0; i &lt; vecPaquetes.size(); i++){</span>
-<span class="nc" id="L136">			this.totalAreaPaquetes = this.totalAreaPaquetes + calculaAreaPaquete(vecPaquetes.elementAt(i));</span>
+<span class="fc" id="L134">		this.totalAreaPaquetes = 0;</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">		for(int i=0; i &lt; vecPaquetes.size(); i++){</span>
+<span class="fc" id="L136">			this.totalAreaPaquetes = this.totalAreaPaquetes + calculaAreaPaquete(vecPaquetes.elementAt(i));</span>
 		}
-<span class="nc" id="L138">		return totalAreaPaquetes;</span>
+<span class="fc" id="L138">		return totalAreaPaquetes;</span>
 	}
 	
 	/**
@@ -143,9 +143,9 @@ public class Contenedor2 {
 	 * @return espacio sobrante en el contenedor
 	 */
 	public int espacioSobrante(){
-<span class="nc" id="L146">		this.espacioSobranteContenedor = this.calcularArea() - this.areaTotalPaquetes();</span>
+<span class="fc" id="L146">		this.espacioSobranteContenedor = this.calcularArea() - this.areaTotalPaquetes();</span>
 		
-<span class="nc" id="L148">		return espacioSobranteContenedor;</span>
+<span class="fc" id="L148">		return espacioSobranteContenedor;</span>
 	
 	}
 }
