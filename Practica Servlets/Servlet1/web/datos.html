@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="estilo.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <form action="Procesar" method="post">
+        <table>
+                
+        <tr><td colspan= "4"><p id="center"><b>Formulario de petición de datos </b></p></td></tr>  
+        <tr><td>Nombre:</td><td colspan= "2"><input type="text" name="nombre" required></td><td></td></tr> 
+        <tr><td>Apellidos:</td><td colspan= "2"><input type="text" name="apellidos" required></td><td></td></tr> 
+        <tr><td>Teléfono:</td><td colspan= "2"><input type="tel" name="tel" required pattern="[6-7][0-9]{8}"></td><td></td></tr> 
+        <tr><td>E-mail:</td><td colspan= "2"><input type="email" name="email" required></td><td></td></tr> 
+        <tr>
+        <td align="right" colspan= "2"><input type="reset" name="vaciar" value="Vaciar formulario"/></td>
+        <td colspan= "2"><input type="submit" name="enviar" value="ConfirmarReserva"/></td>
+        </tr>    
+        </table>
+        </form> 
+    </body>
+</html>
+

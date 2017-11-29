@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ignacio
  */
-public class Presupuesto extends HttpServlet
+public class Procesar extends HttpServlet
 {
 
     /**
@@ -38,10 +38,10 @@ public class Presupuesto extends HttpServlet
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Presupuesto</title>");            
+            out.println("<title>Servlet Procesar</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Presupuesto at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Procesar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,56 +75,37 @@ public class Presupuesto extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        javax.servlet.http.HttpSession sesion = request.getSession(true);
         String CONTENT_TYPE = "text/html";
-        int dias, esquis=0, botas=0, palos=0, tablas=0;
-        String aux;
         response.setContentType(CONTENT_TYPE);
         ServletOutputStream out = response.getOutputStream();
-        dias = Integer.parseInt(request.getParameter("dias"));
-        aux = (request.getParameter("esquis"));
-        if(aux!=null)
-            esquis=Integer.parseInt(aux);
-        aux = (request.getParameter("palos"));
-        if(aux!=null)
-            palos=Integer.parseInt(aux);
-        aux = (request.getParameter("botas"));
-        if(aux!=null)
-            botas=Integer.parseInt(aux);
-        aux = (request.getParameter("tablas"));
-        if(aux!=null)
-            tablas=Integer.parseInt(aux);
+        int coste = (Integer) sesion.getAttribute("coste");
+        int esquis = (Integer) sesion.getAttribute("esquis");
+        int botas = (Integer) sesion.getAttribute("botas");
+        int palos = (Integer) sesion.getAttribute("palos");
+        int tabla = (Integer) sesion.getAttribute("tablas");
+        String nombre = request.getParameter("nombre");
+        String apellidos = request.getParameter("apellidos");
+        String email = request.getParameter("email");
+        int telefono = Integer.parseInt(request.getParameter("tel"));
         
-        String coste="El alquiler del material escogido es de "+coste(dias,esquis,palos,botas,tablas)+" euros";
-        String tiempo;
-        if(dias>1)
-        tiempo="Detalle de material para "+dias+" dias";
-        else
-        tiempo="Detalle de material para "+dias+" dia";    
-        String linea1 = esquis+" pares de esquis";
-        String linea2 = palos+" pares de palos";
-        String linea3 = botas+" pares de botas";
-        String linea4 = tablas+" pares de tablas";
+        boolean exito=insertarDatos(nombre,apellidos,email,telefono,coste,esquis,palos,botas,tabla);
         
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Presupuesto");
+        out.println("<title>Gracias");
         out.println("</title>");
+        out.println("</head>");
         out.println("<BODY BGCOLOR=\"#FDF5E6\">");
-        out.println("<TABLE>");
-        out.println("<TR><TD>"+ coste+"</TD></TR>");
-        out.println("<TR><TD>");
-        out.println("<TR><TD>"+tiempo+"</TD></TR>");
-        out.println("<TR><TD>");
-        if(esquis>0)
-        out.println("<TR><TD>"+linea1+"</TD></TR>");
-        if(palos>0)
-        out.println("<TR><TD>"+linea2+"</TD></TR>");
-        if(botas>0)
-        out.println("<TR><TD>"+linea3+"</TD></TR>");
-        if(tablas>0)
-        out.println("<TR><TD>"+linea4+"</TD></TR>");
-        out.println("<TR><TD><a href=\"index.jsp\"> Regresar </a>");
-        out.println("</TABLE>");
+        if (exito) {
+            out.println("<H1>");
+            out.println("Gracias " + nombre + " " + apellidos + "<br>");
+            out.println("Se ha registrado la reserva de su material de esqui por un coste de " + coste + " euros<br>");
+            out.println("GRACIAS por disfrutar de tu tiempo libre con nosotros</H1>");
+        } else {
+            out.println("<H1> Error al introducir los datos </H1>");
+            out.println("<TR><TD><a href=\"index.jsp\"> Inicio </a>");
+        }
         out.println("</BODY></HTML>");
         out.close();
     }
@@ -140,19 +121,10 @@ public class Presupuesto extends HttpServlet
         return "Short description";
     }// </editor-fold>
 
-    private int coste(int dias, int esquis, int palos, int botas, int tablas)
+    //Para insertar datos en MYSQL
+    private boolean insertarDatos(String nombre, String apellidos, String email, int telefono, int coste, int esquis, int palos, int botas, int tabla)
     {
-        int coste=0;
-        switch(dias){
-            case 1: coste=(15*esquis+4*palos+10*botas+16*tablas)*dias;
-                break;
-            case 2:
-            case 3:coste=(13*esquis+3*palos+9*botas+15*tablas)*dias;
-                break;
-            default:coste=(11*esquis+3*palos+8*botas+14*tablas)*dias;
-                break;
-        }
-        return coste;
+        return true;
     }
 
 }

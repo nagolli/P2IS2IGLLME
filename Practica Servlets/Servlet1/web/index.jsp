@@ -7,12 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Presupuesto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="Presupuesto" method="post">
+        <form action="Presupuesto2" method="post">
         <table>
                 
         <tr><td colspan= "4"><p id="center"><b>Presupuestos de alquiler </b></p></td></tr>  
