@@ -6,8 +6,10 @@
 package paquete;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -180,6 +182,7 @@ public class PresupuestoParte2 extends HttpServlet
     {
         int e1 = 15, p1 = 4, b1 = 10, t1 = 16, e2 = 13, p2 = 3, b2 = 9, t2 = 11, e3 = 3, p3 = 4, b3 = 8, t3 = 14;
         try (BufferedReader br = new BufferedReader(new FileReader("tarifas.txt"))) {
+            //La ubicación de tarifas es en la carpeta de Tomcat/bin
             e1 = Integer.parseInt(br.readLine());
             p1 = Integer.parseInt(br.readLine());
             b1 = Integer.parseInt(br.readLine());

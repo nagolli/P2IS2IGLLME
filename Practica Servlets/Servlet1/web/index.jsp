@@ -13,6 +13,7 @@
     </head>
     <body>
         <form action="Presupuesto2" method="post">
+            <IMG SRC="imagenes/logo.jpg">
         <table>
                 
         <tr><td colspan= "4"><p id="center"><b>Presupuestos de alquiler </b></p></td></tr>  
@@ -28,6 +29,9 @@
         </tr>    
         </table>
         </form> 
+        <br>
+        <a href=Datos> Ver reservas </a><br>
+        <IMG SRC="imagenes/imagen.jpg">
     </body>
 </html>
 

@@ -7,8 +7,11 @@ package paquete;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ignacio
  */
-public class Procesar extends HttpServlet
+public class Datos extends HttpServlet
 {
 
     /**
@@ -38,10 +41,43 @@ public class Procesar extends HttpServlet
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Procesar</title>");
+            out.println("<title>Datos reservas</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Procesar at " + request.getContextPath() + "</h1>");
+
+            try {
+            ResultSet consulta = ConectorBD.obtenerDatos();
+                if (consulta.wasNull()) {
+                    out.println("<H1> Error al conectar con la base de datos </H1>");
+                } else {
+                    out.println("<table>");
+                    out.println("<tr><td> Nombre");
+                    out.println("</td><td> Apellidos");
+                    out.println("</td><td> E-Mail");
+                    out.println("</td><td> Telefono");
+                    out.println("</td><td> Coste");
+                    out.println("</td><td> Par Esquis");
+                    out.println("</td><td> Par Palos");
+                    out.println("</td><td> Par Botas");
+                    out.println("</td><td> Tablas </td></tr>");
+                    while (consulta.next()) {
+                        out.println("<tr><td>" + consulta.getString("nombre"));
+                        out.println("</td><td>" + consulta.getString("apellidos"));
+                        out.println("</td><td>" + consulta.getString("email"));
+                        out.println("</td><td>" + consulta.getInt("telefono"));
+                        out.println("</td><td>" + consulta.getInt("coste"));
+                        out.println("</td><td>" + consulta.getInt("esquis"));
+                        out.println("</td><td>" + consulta.getInt("palos"));
+                        out.println("</td><td>" + consulta.getInt("botas"));
+                        out.println("</td><td>" + consulta.getInt("tablas") + " </td></tr>");
+                    }
+                    out.println("</table>");
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                out.println("<H1> Error al acceder a la base de datos </H1>");
+            }
+            
+            out.println("<TR><TD><a href=\"index.jsp\"> Inicio </a>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,39 +111,7 @@ public class Procesar extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        javax.servlet.http.HttpSession sesion = request.getSession(true);
-        String CONTENT_TYPE = "text/html";
-        response.setContentType(CONTENT_TYPE);
-        ServletOutputStream out = response.getOutputStream();
-        int coste = (Integer) sesion.getAttribute("coste");
-        int esquis = (Integer) sesion.getAttribute("esquis");
-        int botas = (Integer) sesion.getAttribute("botas");
-        int palos = (Integer) sesion.getAttribute("palos");
-        int tabla = (Integer) sesion.getAttribute("tablas");
-        String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("apellidos");
-        String email = request.getParameter("email");
-        int telefono = Integer.parseInt(request.getParameter("tel"));
-        
-        boolean exito=ConectorBD.insertarDatos(nombre, apellidos, email, telefono, coste, esquis, palos, botas, tabla);
-        
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Gracias");
-        out.println("</title>");
-        out.println("</head>");
-        out.println("<BODY BGCOLOR=\"#FDF5E6\">");
-        if (exito) {
-            out.println("<H1>");
-            out.println("Gracias " + nombre + " " + apellidos + "<br>");
-            out.println("Se ha registrado la reserva de su material de esqui por un coste de " + coste + " euros<br>");
-            out.println("GRACIAS por disfrutar de tu tiempo libre con nosotros</H1>");
-        } else {
-            out.println("<H1> Error al introducir los datos </H1>");
-            out.println("<TR><TD><a href=\"index.jsp\"> Inicio </a>");
-        }
-        out.println("</BODY></HTML>");
-        out.close();
+        processRequest(request, response);
     }
 
     /**
