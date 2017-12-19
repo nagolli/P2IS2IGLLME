@@ -20,3 +20,5 @@ Practica Servlets/apache-tomcat-7.0.82/logs/localhost_access_log.2017-11-28.txt
 *.log
 Practica Servlets/apache-tomcat-7.0.82/logs/catalina.2017-11-28.log
 Practica Servlets/apache-tomcat-7.0.82/logs/localhost_access_log.2017-11-29.txt
+/Practica JSP/Practica 6/nbproject/private/
+/Practica JSP/Practica 6/build/
